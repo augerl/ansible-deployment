@@ -10,6 +10,7 @@
 - name: Install psutil python package
   ansible.builtin.pip:
     name: psutil
+    extra_args: --break-system-packages
 
 - name: system setup | cron | start and enable cronie daemon
   tags: cron

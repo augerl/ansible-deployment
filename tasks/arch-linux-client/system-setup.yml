@@ -3,7 +3,7 @@
   tags: packages,cron
   package:
     name:
-      - cronie.
+      - cronie
     state: latest
 
 - name: system setup | cron | start and enable cronie daemon

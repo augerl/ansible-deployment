@@ -1,0 +1,10 @@
+---
+- name: Update pacman database
+  pacman:
+    update_cache: yes
+
+- name: Install base packages
+  pacman:
+    name:
+      - base
+      - base-devel

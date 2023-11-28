@@ -3,8 +3,7 @@
   tags: packages,cron
   package:
     name:
-      - cronie
-      - python3-devel
+      - cronie.
     state: latest
 
 - name: system setup | cron | start and enable cronie daemon

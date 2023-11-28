@@ -4,6 +4,7 @@
   package:
     name:
       - cronie
+      - python-pip
     state: latest
 
 - name: system setup | cron | start and enable cronie daemon

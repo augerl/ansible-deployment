@@ -43,3 +43,10 @@
 
 - name: Update Font cache 
   command: fc-cache -fv
+
+- name: Ensure locales for de-AT exists
+  locale_gen:
+    name: de_AT
+
+- name: Update locales 
+  command: locale-gen

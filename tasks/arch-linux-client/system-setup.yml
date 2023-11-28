@@ -1,10 +1,40 @@
 ---
-- name: Update pacman database
-  pacman:
-    update_cache: yes
-
-- name: Install base packages
-  pacman:
+- name: system setup | cron | install cron package
+  tags: packages,cron
+  package:
     name:
-      - base
-      - base-devel
+      - cronie
+    state: latest
+
+- name: system setup | cron | start and enable cronie daemon
+  tags: cron
+  service:
+    name: cronie
+    state: started
+    enabled: true
+
+- name: Check if Meslo font directory exists
+  ansible.builtin.stat:
+    path: "/usr/share/fonts/Meslo"
+  register: meslo_font_status
+
+- name: Download Meslo Nerd Font
+  ansible.builtin.unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip
+    dest: "/usr/share/fonts/Meslo"
+    remote_src: yes
+  when: meslo_font_status.stat.exists == false
+
+- name: Check if Inter font directory exists
+  ansible.builtin.stat:
+    path: "/usr/share/fonts/inter"
+  register: inter_font_status
+
+- name: Install Inter font if not present
+  package:
+    name: inter-font
+    state: present
+  when: inter_font_status.stat.exists == false
+
+- name: Update Font cache 
+  command: fc-cache -fv

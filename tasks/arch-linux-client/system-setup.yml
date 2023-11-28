@@ -53,7 +53,7 @@
     value: "'Inter Light 11'"
 
 - name: Update Font cache 
-  command: fc-cache -fvdconf
+  command: fc-cache -fv
 
 - name: Set Inter font as document font
   community.general.dconf:

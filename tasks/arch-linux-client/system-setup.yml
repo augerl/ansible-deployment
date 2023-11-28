@@ -14,20 +14,20 @@
     enabled: true
 
 - name: Check if Meslo font directory exists
-  ansible.builtin.stat:
+  stat:
     path: "/usr/share/fonts/Meslo"
   register: meslo_font_status
 
 - name: Download Meslo Nerd Font
-  ansible.builtin.unarchive:
+  unarchive:
     src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip
-    dest: "/usr/share/fonts/"
+    dest: "/usr/share/fonts/Meslo"
     creates: "/usr/share/fonts/Meslo"
     remote_src: yes
   when: meslo_font_status.stat.exists == false
 
 - name: Check if Inter font directory exists
-  ansible.builtin.stat:
+  stat:
     path: "/usr/share/fonts/inter"
   register: inter_font_status
 

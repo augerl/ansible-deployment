@@ -41,12 +41,75 @@
     state: present
   when: inter_font_status.stat.exists == false
 
+- name: Set Inter font as interface font
+  dconf:
+    key: "/org/gnome/desktop/interface/font-name"
+    value: "'Inter Light 11'"
+
 - name: Update Font cache 
   command: fc-cache -fv
 
-- name: Ensure locales for de-AT exists
-  locale_gen:
-    name: de_AT
+- name: Set Inter font as document font
+  dconf:
+    key: "/org/gnome/desktop/interface/document-font-name"
+    value: "'Inter Light 11'"
+
+- name: Set Inter font as titlebar font
+  dconf:
+    key: "/org/gnome/desktop/wm/preferences/titlebar-font"
+    value: "'Inter Bold 11'"
+
+- name: Set Meslo as Terminal font
+  dconf:
+    key: "/org/gnome/desktop/interface/monospace-font-name"
+    value: "'MesloLGS Nerd Font 10'"
+
+- name: Uncomment the line in /etc/locale.gen
+  lineinfile:
+    path: /etc/locale.gen
+    regexp: '^#de_AT.UTF-8 UTF-8'
+    line: 'de_AT.UTF-8 UTF-8'
 
 - name: Update locales 
   command: locale-gen
+
+- name: Set locales with dconf
+  dconf:
+    key: "/system/locale/region"
+    value: "'de_AT.UTF-8'"
+
+- name: Add NoDisplay=true to unused desktop files
+  ansible.builtin.blockinfile:
+    path: "/usr/share/applications/{{ item }}"
+    block: |
+      NoDisplay=true
+    with_items:
+      - avahi-discover.desktop
+      - bssh.desktop
+      - bvnc.desktop
+      - lstopo.desktop
+      - htop.desktop
+      - qv4l2.desktop
+      - qvidcap.desktop
+      - vim.desktop
+      - org.gnome.Tour.desktop
+      - yelp.desktop
+
+- name: Get current username
+  set_fact:
+    current_user: "{{ lookup('env', 'USER') }}"
+    
+- name: Copy profile image
+  copy:
+    src: files/user/profile.png
+    dest: "/var/lib/AccountsService/icons/{{ current_user }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: users | set profile image
+  lineinfile:
+    path: "/var/lib/AccountsService/users/{{ current_user }}"
+    regexp: '^Icon=.*'
+    line: 'Icon=/var/lib/AccountsService/icons/{{ current_user }}'
+    state: present

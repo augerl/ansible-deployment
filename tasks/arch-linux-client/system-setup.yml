@@ -7,17 +7,17 @@
       - python-pip
     state: latest
 
-- name: Install psutil python package
-  ansible.builtin.pip:
-    name: psutil
-    extra_args: --break-system-packages
-
 - name: system setup | cron | start and enable cronie daemon
   tags: cron
   service:
     name: cronie
     state: started
     enabled: true
+
+- name: Install psutil python package
+  ansible.builtin.pip:
+    name: psutil
+    extra_args: --break-system-packages
 
 - name: Check if Meslo font directory exists
   stat:

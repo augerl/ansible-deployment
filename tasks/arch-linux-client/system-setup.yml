@@ -4,6 +4,7 @@
   package:
     name:
       - cronie
+      - python3-devel
     state: latest
 
 - name: system setup | cron | start and enable cronie daemon
@@ -42,25 +43,25 @@
   when: inter_font_status.stat.exists == false
 
 - name: Set Inter font as interface font
-  dconf:
+  community.general.dconf:
     key: "/org/gnome/desktop/interface/font-name"
     value: "'Inter Light 11'"
 
 - name: Update Font cache 
-  command: fc-cache -fv
+  command: fc-cache -fvdconf
 
 - name: Set Inter font as document font
-  dconf:
+  community.general.dconf:
     key: "/org/gnome/desktop/interface/document-font-name"
     value: "'Inter Light 11'"
 
 - name: Set Inter font as titlebar font
-  dconf:
+  community.general.dconf:
     key: "/org/gnome/desktop/wm/preferences/titlebar-font"
     value: "'Inter Bold 11'"
 
 - name: Set Meslo as Terminal font
-  dconf:
+  community.general.dconf:
     key: "/org/gnome/desktop/interface/monospace-font-name"
     value: "'MesloLGS Nerd Font 10'"
 
@@ -73,8 +74,8 @@
 - name: Update locales 
   command: locale-gen
 
-- name: Set locales with dconf
-  dconf:
+- name: Set locales with community.general.dconf
+  community.general.dconf:
     key: "/system/locale/region"
     value: "'de_AT.UTF-8'"
 

@@ -7,6 +7,10 @@
       - python-pip
     state: latest
 
+- name: Install psutil python package
+  ansible.builtin.pip:
+    name: psutil
+
 - name: system setup | cron | start and enable cronie daemon
   tags: cron
   service:

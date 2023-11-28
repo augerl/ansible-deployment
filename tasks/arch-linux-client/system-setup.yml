@@ -21,7 +21,8 @@
 - name: Download Meslo Nerd Font
   ansible.builtin.unarchive:
     src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip
-    dest: "/usr/share/fonts/Meslo"
+    dest: "/usr/share/fonts/"
+    creates: "/usr/share/fonts/Meslo"
     remote_src: yes
   when: meslo_font_status.stat.exists == false
 

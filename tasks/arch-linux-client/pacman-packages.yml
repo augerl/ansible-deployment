@@ -1,6 +1,7 @@
 ---
 - name: install pacman packages
   package:
+  ignore_errors: true
     state: latest
     name:
       # Essentials

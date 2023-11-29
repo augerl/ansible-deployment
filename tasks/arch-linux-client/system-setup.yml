@@ -99,6 +99,7 @@
     - vim.desktop
     - org.gnome.Tour.desktop
     - yelp.desktop
+  ignore_errors: true
 
 - name: Get current username
   set_fact:

@@ -119,3 +119,65 @@
     regexp: '^Icon=.*'
     line: 'Icon=/var/lib/AccountsService/icons/{{ current_user }}'
     state: present
+
+- name: remove preinstalled clutter from home directory
+  file:
+    path: /home/andreas/{{ item }}
+    state: absent
+  with_items:
+    - examples.desktop
+    - Desktop
+    - Documents
+    - Downloads
+    - Music
+    - Pictures
+    - Public
+    - Templates
+    - Videos
+    - Schreibtisch
+    - Bilder
+    - Vorlagen
+    - Musik
+    - Öffentlich
+    - Dokumente
+
+- name: create config directories
+  file:
+    path: /home/{{ current_user }}/{{ item.dir }}
+    state: directory
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0700
+  with_items:
+    - { dir: '.config' }
+    - { dir: '.config/alacritty' }
+    - { dir: '.config/tmux' }
+    - { dir: '.config/tmux/config' }
+    - { dir: '.config/tmux/plugins' }
+    - { dir: '.config/zsh' }
+
+- name: create personal directories
+  file:
+    path: /home/{{ current_user }}/{{ item.dir }}
+    state: directory
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0700
+  with_items:
+    - { dir: desktop }
+    - { dir: documents }
+    - { dir: downloads }
+    - { dir: projects }
+    - { dir: scripts }
+    - { dir: templates }
+    - { dir: music }
+    - { dir: pictures }
+    - { dir: videos }
+
+- name: copy user-dirs.dirs
+  copy:
+    src: users//user-dirs.dirs
+    dest: /home/{{ current_user }}/.config/user-dirs.dirs
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0600

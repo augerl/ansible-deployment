@@ -5,6 +5,7 @@
 
 - name: Install flatpak packages
   flatpak:
+    state: present
     name:
       # Media
       - com.discordapp.Discord    # Team messaging and voice
@@ -39,6 +40,7 @@
       - org.kde.kleopatra         # GPG key and certificate manager
       - org.bleachbit.BleachBit   # Disk cleaner and log remover
       - it.mijorus.smile            # Emoji picker
+      - com.github.tchx84.Flatseal #Flatpak graphical permissions 
 
       # Browsers and internet
       - com.github.Eloston.UngoogledChromium # Chromium-based borwser (secondary)

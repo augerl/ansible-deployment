@@ -1,11 +1,10 @@
 ---
 - name: pre-run | update package cache (arch)
-  tags: always
   pacman: update_cache=yes
   changed_when: False
 
 - name: install pacman packages
-  package:
+  pacman:
     state: latest
     name:
       # Essentials
@@ -15,12 +14,12 @@
       - tmux          # Term multiplexer
       - wget          # Download files
       - zsh           # interactive shell
-      - python3       # python programming language
       - ncdu          # show disk usage
       - net-tools     # control network subsystem
       - rsync         # advanced cp and mv
       - sshfs         # SSH file system
       - nfs-utils     # creating and mounting nfs shares
+      - ruby
 
       # CLI Power Basics
       - aria2         # Resuming download util (better wget)

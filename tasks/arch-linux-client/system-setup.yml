@@ -1,21 +1,19 @@
 ---
-- name: system setup | cron | install cron package
-  tags: packages,cron
+- name: Install cron & pip package
   package:
     name:
       - cronie
       - python-pip
     state: latest
 
-- name: system setup | cron | start and enable cronie daemon
-  tags: cron
+- name: start and enable cronie daemon
   service:
     name: cronie
     state: started
     enabled: true
 
-- name: Install psutil python package
-  ansible.builtin.pip:
+- name: Install psutil python-pip package
+  pip:
     name: psutil
     extra_args: --break-system-packages
 
@@ -48,7 +46,7 @@
   when: inter_font_status.stat.exists == false
 
 - name: Set Inter font as interface font
-  community.general.dconf:
+  dconf:
     key: "/org/gnome/desktop/interface/font-name"
     value: "'Inter Light 11'"
 
@@ -56,17 +54,17 @@
   command: fc-cache -fv
 
 - name: Set Inter font as document font
-  community.general.dconf:
+  dconf:
     key: "/org/gnome/desktop/interface/document-font-name"
     value: "'Inter Light 11'"
 
 - name: Set Inter font as titlebar font
-  community.general.dconf:
+  dconf:
     key: "/org/gnome/desktop/wm/preferences/titlebar-font"
     value: "'Inter Bold 11'"
 
 - name: Set Meslo as Terminal font
-  community.general.dconf:
+  dconf:
     key: "/org/gnome/desktop/interface/monospace-font-name"
     value: "'MesloLGS Nerd Font 10'"
 
@@ -79,27 +77,27 @@
 - name: Update locales 
   command: locale-gen
 
-- name: Set locales with community.general.dconf
-  community.general.dconf:
+- name: Set locales with dconf
+  dconf:
     key: "/system/locale/region"
     value: "'de_AT.UTF-8'"
 
 - name: Add NoDisplay=true to unused desktop files
-  ansible.builtin.blockinfile:
+  blockinfile:
     path: "/usr/share/applications/{{ item }}"
     block: |
       NoDisplay=true
-    loop:
-      - avahi-discover.desktop
-      - bssh.desktop
-      - bvnc.desktop
-      - lstopo.desktop
-      - htop.desktop
-      - qv4l2.desktop
-      - qvidcap.desktop
-      - vim.desktop
-      - org.gnome.Tour.desktop
-      - yelp.desktop
+  with_items:
+    - avahi-discover.desktop
+    - bssh.desktop
+    - bvnc.desktop
+    - lstopo.desktop
+    - htop.desktop
+    - qv4l2.desktop
+    - qvidcap.desktop
+    - vim.desktop
+    - org.gnome.Tour.desktop
+    - yelp.desktop
 
 - name: Get current username
   set_fact:

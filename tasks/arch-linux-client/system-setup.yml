@@ -82,11 +82,12 @@
     key: "/system/locale/region"
     value: "'de_AT.UTF-8'"
 
-- name: Add NoDisplay=true to unused desktop files
+- name: Hide unused applications from Application Launcher
   blockinfile:
     path: "/usr/share/applications/{{ item }}"
     block: |
       NoDisplay=true
+    insertbefore: EOF
   with_items:
     - avahi-discover.desktop
     - bssh.desktop
@@ -98,6 +99,7 @@
     - vim.desktop
     - org.gnome.Tour.desktop
     - yelp.desktop
+  when: "'gnome' in ansible_env.XDG_CURRENT_DESKTOP|default('') or 'gnome' in ansible_env.DESKTOP_SESSION|default('')"
 
 - name: Get current username
   set_fact:

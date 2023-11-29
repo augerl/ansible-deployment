@@ -1,0 +1,53 @@
+---
+# Make Flatpak Apps use GTK Theme 
+- name: make flatpak use GTK4 Theme
+  command: sudo flatpak override --filesystem=xdg-config/gtk-4.0
+
+- name: Install flatpak packages
+  flatpak:
+    name:
+      # Media
+      - com.discordapp.Discord    # Team messaging and voice
+      - com.spotify.Client        # Music streaming
+      - com.gitlab.newsflash      # RSS reader
+      - org.gnome.Cheese          # Webcam client
+      - org.videolan.VLC          # Media player
+      - com.github.johnfactotum.Foliate # E-book reader
+
+      # Creativity
+      - com.uploadedlobster.peek  # Screen recorder
+      - nl.hjdskes.gcolor3        # Color picker
+      - org.audacityteam.Audacity # Sound editor
+      - org.blender.Blender       # 3D modeling
+      - org.flameshot.Flameshot   # Screenshot tool
+      - org.gimp.GIMP             # Picture editor
+      - org.inkscape.Inkscape     # Vector editor
+      
+      # Software development
+      - com.vscodium.codium     # Extendable IDE
+      - com.getpostman.Postman    # API development
+      - cc.arduino.IDE2           # IOT development
+      - com.axosoft.GitKraken     # GUI git client
+      - com.google.AndroidStudio  # Android dev IDE
+      
+      # Security testing
+      - org.wireshark.Wireshark   # Packet capture and analyzer
+      - org.zaproxy.ZAP           # Auto vulnerability scanning
+      - org.nmap.Zenmap           # GUI for Nmap security scans
+
+      # Settings and system utils
+      - org.kde.kleopatra         # GPG key and certificate manager
+      - org.bleachbit.BleachBit   # Disk cleaner and log remover
+      - it.mijorus.smile            # Emoji picker
+
+      # Browsers and internet
+      - com.github.Eloston.UngoogledChromium # Chromium-based borwser (secondary)
+      - com.github.micahflee.torbrowser-launcher # Tor browser
+      - org.filezillaproject.Filezilla # FTP client
+
+      # Office
+      - org.libreoffice.LibreOffice # Office suite
+      - md.obsidian.Obsidian        # Markdown editor
+      
+      # Personal
+      - com.bitwarden.desktop     # Password manager

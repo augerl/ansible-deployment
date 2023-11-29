@@ -3,7 +3,7 @@
   package:
     name:
       - cronie
-      - python-pip
+      - python-psutil
     state: latest
 
 - name: start and enable cronie daemon
@@ -12,19 +12,19 @@
     state: started
     enabled: true
 
-- name: Check if pip externally managed file exists
-  stat:
-    path: "/usr/lib/python3.11/EXTERNALLY-MANAGED"
-  register: externally_managed_status
+#- name: Check if pip externally managed file exists
+#  stat:
+#    path: "/usr/lib/python3.11/EXTERNALLY-MANAGED"
+#  register: externally_managed_status
 
-- name: remove pip externally managed
-  become: true
-  command: rm /usr/lib/python3.11/EXTERNALLY-MANAGED
-  when: externally_managed_status.stat.exists == true
+#- name: remove pip externally managed
+#  become: true
+#  command: rm /usr/lib/python3.11/EXTERNALLY-MANAGED
+#  when: externally_managed_status.stat.exists == true
 
-- name: Install psutil python-pip package
-  pip:
-    name: psutil
+#- name: Install psutil python-pip package
+#  pip:
+#    name: psutil
 #    extra_args: --break-system-packages
 
 - name: Check if Meslo font directory exists

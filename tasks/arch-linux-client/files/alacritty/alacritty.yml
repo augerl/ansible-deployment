@@ -1,0 +1,52 @@
+shell:
+  program: /usr/bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux"
+
+live_config_reload: true
+
+window:
+  opacity: 0.75
+  padding:
+    x: 6
+    y: 6
+
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+cursor:
+  style:
+    shape: Beam
+    blinking: Always
+    blink-interval: 750
+
+selection:
+  save_to_clipboard: true
+
+font:
+  normal:
+    family: MesloLGS NF
+    style: Light
+  bold:
+    family: MesloLGS NF
+    style: Bold
+  italic:
+    family: MesloLGS NF
+    style: RegularItalic
+  bold_italic:
+    family: MesloLGS NF
+    style: BoldItalic
+draw_bold_test_with_bright_colors: true
+
+env:
+  TERM: xterm-256color
+
+import:
+ - ~/.config/alacritty/themes/terminal_app/terminal_app.yml

@@ -1,0 +1,19 @@
+---
+- name: Get current username
+  set_fact:
+    current_user: "{{ lookup('env', 'USER') }}"
+
+- name: clone alacritty catpuccin theme repository
+  git:
+    repo: https://github.com/alacritty/terminal_app
+    dest: /home/{{ current_user }}/.config/alacritty/themes/
+    force: yes
+
+- name: users | {{ current_user }} | copy alacritty config
+  tags: dotfiles,users,{{ current_user }},alacritty
+  copy:
+    src: files/alacritty/alacritty.yml
+    dest: /home/{{ current_user }}/.config/alacritty/alacritty.yml
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0600

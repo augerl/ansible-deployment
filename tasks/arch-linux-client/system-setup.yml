@@ -151,8 +151,8 @@
   with_items:
     - { dir: '.config' }
     - { dir: '.config/alacritty' }
+    - { dir: '.config/alacritty/themes' }
     - { dir: '.config/tmux' }
-    - { dir: '.config/tmux/config' }
     - { dir: '.config/tmux/plugins' }
     - { dir: '.config/zsh' }
 

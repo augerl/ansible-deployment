@@ -20,7 +20,7 @@
 - name: remove pip externally managed
   become: true
   command: rm /usr/lib/python3.11/EXTERNALLY-MANAGED
-  when: externally_managed_status.stat.exists == false
+  when: externally_managed_status.stat.exists == true
 
 - name: Install psutil python-pip package
   pip:

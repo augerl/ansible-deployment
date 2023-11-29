@@ -176,7 +176,7 @@
 
 - name: copy user-dirs.dirs
   copy:
-    src: users//user-dirs.dirs
+    src: files/user/user-dirs.dirs
     dest: /home/{{ current_user }}/.config/user-dirs.dirs
     owner: "{{ current_user }}"
     group: "{{ current_user }}"

@@ -6,6 +6,7 @@
       - base-devel
       - cronie
       - python-psutil
+      - python-pexpect
     state: latest
 
 - name: start and enable cronie daemon

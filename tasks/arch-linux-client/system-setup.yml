@@ -236,7 +236,7 @@
   git:
     repo: https://github.com/AdnanHodzic/auto-cpufreq.git
     dest: /home/{{ current_user }}/projects/auto-cpufreq
-  when: yay_status.stat.exists == false
+  when: autocpufreq_status.stat.exists == false
 
 - name: make auto-cpufreq directory accessible
   file:

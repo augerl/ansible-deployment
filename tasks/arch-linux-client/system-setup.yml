@@ -210,5 +210,6 @@
 
 - name: Change to the yay directory
   shell: yes | makepkg -si
+  become: no
   args:
     chdir: "/home/{{ current_user }}/projects/yay"

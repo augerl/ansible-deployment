@@ -197,8 +197,7 @@
 - name: clone yay repository
   git:
     repo: https://aur.archlinux.org/yay.git
-    dest: /home/{{ current_user }}/projects
-    force: yes
+    dest: /home/{{ current_user }}/projects/yay
 
 - name: make yay package
   command: /home/{{ current_user }}/projects/yay makepkg -si

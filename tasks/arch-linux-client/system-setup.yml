@@ -2,6 +2,8 @@
 - name: Install cron & pip package
   package:
     name:
+      - git
+      - base-devel
       - cronie
       - python-psutil
     state: latest
@@ -191,3 +193,12 @@
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
     mode: 0600
+
+- name: clone yay repository
+  git:
+    repo: https://aur.archlinux.org/yay.git
+    dest: /home/{{ current_user }}/projects
+    force: yes
+
+- name: make yay package
+  command: /home/{{ current_user }}/projects/yay makepkg -si

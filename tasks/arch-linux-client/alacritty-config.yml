@@ -5,7 +5,7 @@
 
 - name: clone alacritty catpuccin theme repository
   git:
-    repo: https://github.com/alacritty/terminal_app
+    repo: https://github.com/alacritty/alacritty-theme
     dest: /home/{{ current_user }}/.config/alacritty/themes/
     force: yes
 

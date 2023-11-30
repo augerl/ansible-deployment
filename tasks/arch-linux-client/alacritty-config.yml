@@ -10,7 +10,6 @@
     force: yes
 
 - name: users | {{ current_user }} | copy alacritty config
-  tags: dotfiles,users,{{ current_user }},alacritty
   copy:
     src: files/alacritty/alacritty.yml
     dest: /home/{{ current_user }}/.config/alacritty/alacritty.yml

@@ -253,8 +253,7 @@
   shell: ./auto-cpufreq-installer
   args:
     chdir: /home/{{ current_user }}/projects/auto-cpufreq
-  when: autocpufreq_check.rc != 0
-
+    
 - name: Install auto-cpufreq daemon
   become: yes
   shell: auto-cpufreq --install

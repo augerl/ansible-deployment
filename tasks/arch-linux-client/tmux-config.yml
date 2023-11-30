@@ -1,39 +1,43 @@
 ---
-- name: Get current username
-  set_fact:
-    current_user: "{{ lookup('env', 'USER') }}"
+- name: install aya  
+  command: pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+  ignore_errors: true
 
-- name: clone tmux-plugin-manager repository
-  git:
-    repo: https://github.com/tmux-plugins/tpm.git
-    dest: /home/{{ current_user }}/.config/tmux/plugins/tpm
-    force: yes
-
-- name:  clone tmux-completion plugin repository
-  git:
-    repo: https://github.com/srsudar/tmux-completion.git
-    dest: /home/{{ current_user }}/.config/tmux/plugins/completion
-    force: yes
-
-- name: clone tmux-continuum plugin repository
-  git:
-    repo: https://github.com/tmux-plugins/tmux-continuum
-    dest: /home/{{ current_user }}/.config/tmux/plugins/continuum
-    force: yes
-
-- name:  clone tmux-resurrect plugin repository
-  git:
-    repo: https://github.com/tmux-plugins/tmux-resurrect
-    dest: /home/{{ current_user }}/.config/tmux/plugins/resurrect
-    force: yes
-
-- name: copy tmux config
-  copy:
-    src: files/tmux/tmux.conf
-    dest: /home/{{ current_user }}/.config/tmux/tmux.conf
-    owner: "{{ current_user }}"
-    group: "{{ current_user }}"
-    mode: 0600
+#- name: Get current username
+#  set_fact:
+#    current_user: "{{ lookup('env', 'USER') }}"
+#
+#- name: clone tmux-plugin-manager repository
+#  git:
+#    repo: https://github.com/tmux-plugins/tpm.git
+#    dest: /home/{{ current_user }}/.config/tmux/plugins/tpm
+#    force: yes
+#
+#- name:  clone tmux-completion plugin repository
+#  git:
+#    repo: https://github.com/srsudar/tmux-completion.git
+#    dest: /home/{{ current_user }}/.config/tmux/plugins/completion
+#    force: yes
+#
+#- name: clone tmux-continuum plugin repository
+#  git:
+#    repo: https://github.com/tmux-plugins/tmux-continuum
+#    dest: /home/{{ current_user }}/.config/tmux/plugins/continuum
+#    force: yes
+#
+#- name:  clone tmux-resurrect plugin repository
+#  git:
+#    repo: https://github.com/tmux-plugins/tmux-resurrect
+#    dest: /home/{{ current_user }}/.config/tmux/plugins/resurrect
+#    force: yes
+#
+#- name: copy tmux config
+#  copy:
+#    src: files/tmux/tmux.conf
+#    dest: /home/{{ current_user }}/.config/tmux/tmux.conf
+#    owner: "{{ current_user }}"
+#    group: "{{ current_user }}"
+#    mode: 0600
 
 #- name: source tmux.conf to apply changes 
 #  command: tmux source ~/.config/tmux/tmux.conf

@@ -3,7 +3,7 @@
   set_fact:
     current_user: "{{ lookup('env', 'USER') }}"
 
-- name: clone alacritty catpuccin theme repository
+- name: clone alacritty theme repository
   git:
     repo: https://github.com/alacritty/alacritty-theme
     dest: /home/{{ current_user }}/.config/alacritty/themes/

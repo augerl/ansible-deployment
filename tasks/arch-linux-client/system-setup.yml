@@ -209,7 +209,7 @@
     mode: 0700
 
 - name: Change to the directory
-  command: "Y | makepkg -si"
-  become: no
-  args:
+  expect:
+    command: "makepkg -si"
     chdir: "/home/{{ current_user }}/projects/yay"
+    responses: "yes" 

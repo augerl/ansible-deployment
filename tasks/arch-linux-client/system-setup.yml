@@ -262,7 +262,7 @@
     command: ./auto-cpufreq-installer
     chdir: /home/{{ current_user }}/projects/auto-cpufreq
     responses:
-      "Select a key: [i/r/q]": "i"
+      "──────────────────────────── auto-cpufreq installer ────────────────────────────\r\n\r\nWelcome to auto-cpufreq tool installer.\r\n  \t\t\t\r\nOptions:\r\n\r\n[I]nstall\r\n[R]emove\r\n[Q]uit\r\n\r\nSelect a key: [i/r/q]: " : "i"
 
 - name: Install auto-cpufreq daemon
   become: yes

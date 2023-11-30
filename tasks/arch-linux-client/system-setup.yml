@@ -137,14 +137,6 @@
     mode: '0644'
   when: not userfile_stat.stat.exists
 
-- name: Copy profile image
-  copy:
-    src: files/user/profile.png
-    dest: "/var/lib/AccountsService/icons/{{ current_user }}"
-    owner: root
-    group: root
-    mode: 0644
-
 - name: users | set profile image
   lineinfile:
     path: "/var/lib/AccountsService/users/{{ current_user }}"
@@ -152,6 +144,14 @@
     line: 'Icon=/var/lib/AccountsService/icons/{{ current_user }}'
     state: present
   when: userfile_stat.stat.exists
+
+- name: Copy profile image
+  copy:
+    src: files/user/profile.png
+    dest: "/var/lib/AccountsService/icons/{{ current_user }}"
+    owner: root
+    group: root
+    mode: 0644
 
 - name: remove preinstalled clutter from home directory
   file:
@@ -234,7 +234,6 @@
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
     mode: 0700
-  when: yay_status.stat.exists == true
 
 - name: Check if yay is installed
   command: "which yay"

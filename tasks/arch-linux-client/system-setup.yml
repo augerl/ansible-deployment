@@ -248,11 +248,6 @@
     mode: 0700
   when: autocpufreq_status.stat.exists == true
 
-- name: Check if auto-cpufreq is installed
-  command: "which auto-cpufreq"
-  register: autocpufreq_check
-  ignore_errors: true
-
 - name: Install the auto-cpufreq package
   become: yes
   shell: ./auto-cpufreq-installer

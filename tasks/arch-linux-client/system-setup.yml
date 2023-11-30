@@ -208,6 +208,7 @@
     group: "{{ current_user }}"
     mode: 0700
 
-- name: make yay package
-  become_user: "{{ current_user }}" 
-  command: /home/{{ current_user }}/projects/yay makepkg -si
+- name: Change to the directory
+  command: "y | makepkg -si"
+  args:
+    chdir: "/home/{{ current_user }}/projects/yay"

@@ -254,11 +254,14 @@
   ignore_errors: true
 
 - name: Install the auto-cpufreq package
+  expect:
   become: yes
-  shell: sudo ./auto-cpufreq-installer
+  become_method: sudo
   args:
+    command: ./auto-cpufreq-installer
     chdir: /home/{{ current_user }}/projects/auto-cpufreq
-  when: autocpufreq_check.rc != 0
+    responses:
+      "Select a key: [i/r/q]": "i"
 
 - name: Install auto-cpufreq daemon
   become: yes

@@ -194,10 +194,16 @@
     group: "{{ current_user }}"
     mode: 0600
 
+- name: Check if yay directory already exists
+  stat:
+    path: "/home/{{ current_user }}/projects/yay"
+  register: yay_status
+
 - name: clone yay repository
   git:
     repo: https://aur.archlinux.org/yay.git
     dest: /home/{{ current_user }}/projects/yay
+  when: yay_status.stat.exists == false
 
 - name: make yay directory accessible
   file:
@@ -207,17 +213,30 @@
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
     mode: 0700
+  when: yay_status.stat.exists == true
+
+- name: Check if yay is installed
+  command: "which yay"
+  register: yay_check
+  ignore_errors: true
 
 - name: Install the yay package
   shell: yes | makepkg -si
   become: no
   args:
     chdir: "/home/{{ current_user }}/projects/yay"
+  when: yay_check.rc != 0
+
+- name: Check if auto-cpufreq directory already exists
+  stat:
+    path: "/home/{{ current_user }}/projects/auto-cpufreq"
+  register: auto-cpufreq_status
 
 - name: clone auto-cpufreq repository
   git:
     repo: https://github.com/AdnanHodzic/auto-cpufreq.git
     dest: /home/{{ current_user }}/projects/auto-cpufreq
+  when: yay_status.stat.exists == false
 
 - name: make auto-cpufreq directory accessible
   file:
@@ -227,12 +246,19 @@
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
     mode: 0700
+  when: auto-cpufreq_status.stat.exists == true
+
+- name: Check if auto-cpufreq is installed
+  command: "which auto-cpufreq"
+  register: auto-cpufreq_check
+  ignore_errors: true
 
 - name: Install the auto-cpufreq package
   become: yes
   shell: ./auto-cpufreq-installer
   args:
     chdir: /home/{{ current_user }}/projects/auto-cpufreq
+  when: auto-cpufreq_check.rc != 0
 
 - name: Install auto-cpufreq daemon
   become: yes

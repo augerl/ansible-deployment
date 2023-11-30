@@ -228,57 +228,42 @@
     chdir: "/home/{{ current_user }}/projects/yay"
   when: yay_check.rc != 0
 
-- name: Install auto-cpufreq
+- name: Check if auto-cpufreq directory already exists
+  stat:
+    path: "/home/{{ current_user }}/projects/auto-cpufreq"
+  register: autocpufreq_status
+
+- name: clone auto-cpufreq repository
+  git:
+    repo: https://github.com/AdnanHodzic/auto-cpufreq.git
+    dest: /home/{{ current_user }}/projects/auto-cpufreq
+  when: autocpufreq_status.stat.exists == false
+
+- name: make auto-cpufreq directory accessible
+  file:
+    path: /home/{{ current_user }}/projects/auto-cpufreq
+    state: directory
+    recurse: yes
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0700
+  when: autocpufreq_status.stat.exists == true
+
+- name: Check if auto-cpufreq is installed
+  command: "which auto-cpufreq"
+  register: autocpufreq_check
+  ignore_errors: true
+
+- name: Install the auto-cpufreq package
+  expect:
   become: yes
-  shell: yay -S auto-cpufreq
-
-- name: Mask power-profiles-daemon.service
-  systemd:
-    name: power-profiles-daemon.service
-    masked: yes
-    state: started
-
-- name: Enable and start auto-cpufreq service
-  systemd:
-    name: auto-cpufreq
-    enabled: yes
-    state: started
-
-#- name: Check if auto-cpufreq directory already exists
-#  stat:
-#    path: "/home/{{ current_user }}/projects/auto-cpufreq"
-#  register: autocpufreq_status
-#
-#- name: clone auto-cpufreq repository
-#  git:
-#    repo: https://github.com/AdnanHodzic/auto-cpufreq.git
-#    dest: /home/{{ current_user }}/projects/auto-cpufreq
-#  when: autocpufreq_status.stat.exists == false
-#
-#- name: make auto-cpufreq directory accessible
-#  file:
-#    path: /home/{{ current_user }}/projects/auto-cpufreq
-#    state: directory
-#    recurse: yes
-#    owner: "{{ current_user }}"
-#    group: "{{ current_user }}"
-#    mode: 0700
-#  when: autocpufreq_status.stat.exists == true
-#
-#- name: Check if auto-cpufreq is installed
-#  command: "which auto-cpufreq"
-#  register: autocpufreq_check
-#  ignore_errors: true
-#
-#- name: Install the auto-cpufreq package
-#  expect:
-#  become: yes
-#  become_method: sudo
-#  args:
-#    command: ./auto-cpufreq-installer
-#    chdir: /home/{{ current_user }}/projects/auto-cpufreq
-#    responses:
-#
-#- name: Install auto-cpufreq daemon
-#  become: yes
-#  shell: sudo auto-cpufreq --install
+  become_method: sudo
+  args:
+    command: ./auto-cpufreq-installer
+    chdir: /home/{{ current_user }}/projects/auto-cpufreq
+    responses:
+      (.*)Select a key(.*): "i"
+      
+- name: Install auto-cpufreq daemon
+  become: yes
+  shell: sudo auto-cpufreq --install

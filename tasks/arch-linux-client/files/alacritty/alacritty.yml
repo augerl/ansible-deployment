@@ -32,16 +32,16 @@ selection:
 
 font:
   normal:
-    family: MesloLGS NF
+    family: MesloLGS Nerd Font
     style: Light
   bold:
-    family: MesloLGS NF
+    family: MesloLGS Nerd Font
     style: Bold
   italic:
-    family: MesloLGS NF
+    family: MesloLGS Nerd Font
     style: RegularItalic
   bold_italic:
-    family: MesloLGS NF
+    family: MesloLGS Nerd Font
     style: BoldItalic
 draw_bold_test_with_bright_colors: true
 

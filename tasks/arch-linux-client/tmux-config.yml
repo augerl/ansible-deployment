@@ -34,3 +34,6 @@
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
     mode: 0600
+
+- name: source tmux.conf to apply changes 
+  command: tmux source ~/.config/tmux/tmux.conf

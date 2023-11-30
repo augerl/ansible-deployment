@@ -230,7 +230,7 @@
 - name: Check if auto-cpufreq directory already exists
   stat:
     path: "/home/{{ current_user }}/projects/auto-cpufreq"
-  register: auto-cpufreq_status
+  register: autocpufreq_status
 
 - name: clone auto-cpufreq repository
   git:
@@ -246,7 +246,7 @@
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
     mode: 0700
-  when: auto-cpufreq_status.stat.exists == true
+  when: autocpufreq_status.stat.exists == true
 
 - name: Check if auto-cpufreq is installed
   command: "which auto-cpufreq"

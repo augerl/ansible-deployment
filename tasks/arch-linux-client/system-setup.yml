@@ -117,7 +117,26 @@
 - name: Get current username
   set_fact:
     current_user: "{{ lookup('env', 'USER') }}"
-    
+
+- name: Check if the user file exists
+  stat:
+    path: "/var/lib/AccountsService/users/{{ current_user }}"
+  register: userfile_stat
+
+- name: Create the file if it doesn't exist
+  lineinfile:
+    path: "/var/lib/AccountsService/users/{{ current_user }}"
+    create: yes
+    line: |
+      [User]
+      Session=
+      Icon=/var/lib/AccountsService/icons/{{ current_user }}
+      SystemAccount=false
+    owner: root
+    group: root
+    mode: '0644'
+  when: not userfile_stat.stat.exists
+
 - name: Copy profile image
   copy:
     src: files/user/profile.png
@@ -132,6 +151,7 @@
     regexp: '^Icon=.*'
     line: 'Icon=/var/lib/AccountsService/icons/{{ current_user }}'
     state: present
+  when: userfile_stat.stat.exists
 
 - name: remove preinstalled clutter from home directory
   file:
@@ -263,7 +283,7 @@
     chdir: /home/{{ current_user }}/projects/auto-cpufreq
     responses:
       (.*)Select a key(.*): "i"
-      
+
 - name: Install auto-cpufreq daemon
   become: yes
   shell: sudo auto-cpufreq --install

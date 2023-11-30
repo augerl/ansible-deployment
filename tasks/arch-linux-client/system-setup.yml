@@ -181,7 +181,7 @@
     - { dir: downloads }
     - { dir: projects }
     - { dir: scripts }
-    - { dir: templates }s
+    - { dir: templates }
     - { dir: music }
     - { dir: pictures }
     - { dir: videos }

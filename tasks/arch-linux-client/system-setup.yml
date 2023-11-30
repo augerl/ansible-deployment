@@ -209,4 +209,5 @@
     mode: 0700
 
 - name: make yay package
+  become_user: "{{ current_user }}" 
   command: /home/{{ current_user }}/projects/yay makepkg -si

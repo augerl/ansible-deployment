@@ -8,5 +8,5 @@
 #    - include_tasks: tasks/arch-linux-client/system-setup.yml
 #    - include_tasks: tasks/arch-linux-client/pacman-packages.yml
 #    - include_tasks: tasks/arch-linux-client/flatpak-packages.yml
-#    - include_tasks: tasks/arch-linux-client/alacritty-config.yml
-    - include_tasks: tasks/arch-linux-client/tmux-config.yml
+    - include_tasks: tasks/arch-linux-client/alacritty-config.yml
+#    - include_tasks: tasks/arch-linux-client/tmux-config.yml

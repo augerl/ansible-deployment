@@ -9,7 +9,7 @@
     dest: /home/{{ current_user }}/.config/alacritty/themes/
     force: yes
 
-- name: users | {{ current_user }} | copy alacritty config
+- name: copy alacritty config
   copy:
     src: files/alacritty/alacritty.yml
     dest: /home/{{ current_user }}/.config/alacritty/alacritty.yml

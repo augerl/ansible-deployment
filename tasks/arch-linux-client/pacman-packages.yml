@@ -70,7 +70,7 @@
       - iotop         # measure input/output
 
       # CLI Fun
-      - cowsay        # Outputs message with ASCII art cow
+      #- cowsay        # Outputs message with ASCII art cow
       - figlet        # Outputs text as 3D ASCII word art
       - lolcat        # Rainbow colored terminal output
       - neofetch      # Show off distro and system info

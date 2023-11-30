@@ -15,7 +15,7 @@
     dest: /home/{{ current_user }}/.config/tmux/plugins/completion
     force: yes
 
-- name: users | a | clone tmux-continuum plugin repository
+- name: clone tmux-continuum plugin repository
   git:
     repo: https://github.com/tmux-plugins/tmux-continuum
     dest: /home/{{ current_user }}/.config/tmux/plugins/continuum
@@ -35,5 +35,6 @@
     group: "{{ current_user }}"
     mode: 0600
 
-- name: source tmux.conf to apply changes 
-  command: tmux source ~/.config/tmux/tmux.conf
+#- name: source tmux.conf to apply changes 
+#  command: tmux source ~/.config/tmux/tmux.conf
+#  ignore_errors: true

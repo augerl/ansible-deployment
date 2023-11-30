@@ -250,7 +250,7 @@
 
 - name: Check if auto-cpufreq is installed
   command: "which auto-cpufreq"
-  register: auto-cpufreq_check
+  register: autocpufreq_check
   ignore_errors: true
 
 - name: Install the auto-cpufreq package
@@ -258,7 +258,7 @@
   shell: ./auto-cpufreq-installer
   args:
     chdir: /home/{{ current_user }}/projects/auto-cpufreq
-  when: auto-cpufreq_check.rc != 0
+  when: autocpufreq_check.rc != 0
 
 - name: Install auto-cpufreq daemon
   become: yes

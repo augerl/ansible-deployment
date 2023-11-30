@@ -208,8 +208,7 @@
     group: "{{ current_user }}"
     mode: 0700
 
-- name: Change to the directory
-  expect:
-    command: "makepkg -si"
+- name: Change to the yay directory
+  shell: yes | makepkg -si
+  args:
     chdir: "/home/{{ current_user }}/projects/yay"
-    responses: "yes" 

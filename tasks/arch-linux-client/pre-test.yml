@@ -48,6 +48,7 @@
     responses:
       (.*)Select a key(.*): "i"
   ignore_errors: true
+  timeout: 180
 
 - name: Install auto-cpufreq daemon
   become: yes

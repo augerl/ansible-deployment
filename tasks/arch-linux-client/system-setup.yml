@@ -1,5 +1,5 @@
 ---
-- name: Install cron & pip package
+- name: Install some necassary system stuff
   package:
     name:
       - git
@@ -282,7 +282,9 @@
     chdir: /home/{{ current_user }}/projects/auto-cpufreq
     responses:
       (.*)Select a key(.*): "i"
+  ignore_errors: true
 
 - name: Install auto-cpufreq daemon
   become: yes
   shell: sudo auto-cpufreq --install
+  ignore_errors: true

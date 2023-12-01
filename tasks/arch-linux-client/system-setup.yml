@@ -202,39 +202,42 @@
     group: "{{ current_user }}"
     mode: 0600
 
-- name: Check if paru directory already exists
+- name: Check if yay directory already exists
   stat:
-    path: "/home/{{ current_user }}/projects/paru"
-  register: paru_status
+    path: "/home/{{ current_user }}/projects/yay"
+  register: yay_status
 
-- name: clone paru repository
+- name: clone yay repository
   git:
-    repo: https://aur.archlinux.org/paru.git
-    dest: /home/{{ current_user }}/projects/paru
-  when: paru_status.stat.exists == false
+    repo: https://aur.archlinux.org/yay.git
+    dest: /home/{{ current_user }}/projects/yay
+  when: yay_status.stat.exists == false
 
-- name: make paru directory accessible
+- name: make yay directory accessible
   file:
-    path: /home/{{ current_user }}/projects/paru
+    path: /home/{{ current_user }}/projects/yay
     state: directory
     recurse: yes
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
     mode: 0700
 
-- name: Check if paru is installed
-  command: "which paru"
-  register: paru_check
+- name: Check if yay is installed
+  command: "which yay"
+  register: yay_check
   ignore_errors: true
 
-- name: Install the paru package
-  shell: yes | makepkg -si
+- name: Install yay
+  expect:
   become: no
   args:
-    chdir: "/home/{{ current_user }}/projects/paru"
-  when: paru_check.rc != 0
+    command: makepkg -si
+    chdir: /home/{{ current_user }}/projects/yay
+    responses:
+      (.*)Proceed with installation(.*): "yes"
+  when: yay_check.rc != 0 
 
-- name: copy alacritty config
+- name: copy tlp config file to /etc
   copy:
     src: files/tlp/tlp.conf
     dest: /etc/tlp.conf

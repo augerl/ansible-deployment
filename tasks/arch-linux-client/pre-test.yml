@@ -3,6 +3,16 @@
   set_fact:
     current_user: "{{ lookup('env', 'USER') }}"
 
+- name: Install some necassary system stuff
+  package:
+    name:
+      - git
+      - base-devel
+      - cronie
+      - python-psutil
+      - python-pexpect
+    state: latest
+
 - name: Check if auto-cpufreq directory already exists
   stat:
     path: "/home/{{ current_user }}/projects/auto-cpufreq"
@@ -22,7 +32,6 @@
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
     mode: 0700
-  when: autocpufreq_status.stat.exists == true
 
 - name: Check if auto-cpufreq is installed
   command: "which auto-cpufreq"

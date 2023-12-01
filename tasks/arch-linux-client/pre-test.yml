@@ -1,4 +1,8 @@
 ---
+- name: Get current username
+  set_fact:
+    current_user: "{{ lookup('env', 'USER') }}"
+
 - name: Check if auto-cpufreq directory already exists
   stat:
     path: "/home/{{ current_user }}/projects/auto-cpufreq"

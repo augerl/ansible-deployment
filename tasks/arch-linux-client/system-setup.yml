@@ -9,6 +9,7 @@
       - python-pexpect
       - tlp
       - tlp-rdw
+      - go
     state: latest
 
 - name: start and enable cronie daemon

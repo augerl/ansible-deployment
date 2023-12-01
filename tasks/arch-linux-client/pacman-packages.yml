@@ -62,6 +62,7 @@
       # Monitoring, management and stats
       - btop          # Live system resource monitoring
       - bmon          # Bandwidth utilization monitor
+      - powertop      # Check power utilization of hardware
       - ctop          # Container metrics and monitoring
       - gping         # Interactive ping tool, with graph
       - glances       # Resource monitor + web and API

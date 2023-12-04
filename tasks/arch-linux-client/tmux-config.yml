@@ -37,5 +37,5 @@
     mode: 0600
 
 - name: source tmux.conf to apply changes 
-  command: tmux source /home/{{ current_user }}/.config/tmux/tmux.conf
+  command: "tmux source /home/{{ current_user }}/.config/tmux/tmux.conf"
   ignore_errors: true

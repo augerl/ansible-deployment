@@ -98,6 +98,6 @@
 
 - name: Install / update ZSH plugins with Antigen
   expect:
-    shell: "/usr/bin/zsh -i -c 'antigen update && antigen-apply'"
+    command: "/usr/bin/zsh -i -c 'antigen update && antigen-apply'"
     responses:
       (.*)Would you like to install Antigen now?(.*): "y"

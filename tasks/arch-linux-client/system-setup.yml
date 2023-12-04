@@ -230,6 +230,7 @@
 
 - name: Install yay
   expect:
+  timeout: 300
   become: no
   args:
     command: makepkg -si
@@ -237,7 +238,6 @@
     responses:
       (.*)Proceed with installation(.*): "yes"
   when: yay_check.rc != 0
-  timeout: 180
 
 - name: copy tlp config file to /etc
   copy:

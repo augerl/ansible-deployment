@@ -89,3 +89,8 @@
   with_items:
     - "welcome-banner.sh"
     - "matrix.sh"
+
+- name: Install / update ZSH plugins with Antigen
+  shell: "antigen update && antigen-apply"
+  args:
+    exectuable: /usr/bin/zsh

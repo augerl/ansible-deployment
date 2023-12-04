@@ -22,7 +22,7 @@ antigen bundle supercrabtree/k
 antigen bundle colorize
 
 # Auto ls after every cd
-antigen bundle zshzoo/cd-ls
+antigen bundle rummik/zsh-cdls
 
 # Tell antigen that you're done
 antigen apply

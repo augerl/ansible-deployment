@@ -20,6 +20,8 @@
       - sshfs         # SSH file system
       - nfs-utils     # creating and mounting nfs shares
       - ruby
+      - man-db
+      - man-pages
 
       # CLI Power Basics
       - aria2         # Resuming download util (better wget)
@@ -87,3 +89,4 @@
       - firefox
       - thunderbird
       - alacritty
+

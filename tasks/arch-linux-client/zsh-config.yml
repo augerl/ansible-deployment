@@ -33,7 +33,7 @@
     group: "{{ current_user }}"
     mode: 0700
   with_items:
-   - { src: 'zshenv', dst: '.zshenv'}
+    - { src: 'zshenv', dst: '.zshenv'}
     - { src: 'zshrc', dst: '.zshrc'}
     - { src: 'zlogin', dst: '.zlogin'}
     - { src: 'zlogout', dst: '.zlogout'}

@@ -228,16 +228,23 @@
   register: yay_check
   ignore_errors: true
 
-- name: Install yay
-  expect:
-  timeout: 300
+- name: install yay
   become: no
+  shell: "yes | makepkg -si"
   args:
-    command: makepkg -si
     chdir: /home/{{ current_user }}/projects/yay
-    responses:
-      (.*)Proceed with installation(.*): "yes"
   when: yay_check.rc != 0
+
+#- name: Install yay
+#  expect:
+#  timeout: 300
+#  become: no
+#  args:
+#    command: makepkg -si
+#    chdir: /home/{{ current_user }}/projects/yay
+#    responses:
+#      (.*)Proceed with installation(.*): "yes"
+#  when: yay_check.rc != 0
 
 - name: copy tlp config file to /etc
   copy:

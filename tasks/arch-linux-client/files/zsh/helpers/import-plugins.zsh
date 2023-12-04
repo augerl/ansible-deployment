@@ -21,8 +21,5 @@ antigen bundle supercrabtree/k
 # Syntax highlighting for cat
 antigen bundle colorize
 
-# Auto ls after every cd
-antigen bundle rummik/zsh-cdls
-
 # Tell antigen that you're done
 antigen apply

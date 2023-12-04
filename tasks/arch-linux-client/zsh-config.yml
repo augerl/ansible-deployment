@@ -17,13 +17,13 @@
     - { dir: 'utils' }
     - { dir: 'antigen' }
 
-- name: Copy zsh environment file to home directory
-  copy:
-    src: "files/zsh/zshenv"
-    dest: "/home/{{ current_user }}/.zshenv"
-    owner: "{{ current_user }}"
-    group: "{{ current_user }}"
-    mode: 0700
+#- name: Copy zsh environment file to home directory
+#  copy:
+#    src: "files/zsh/zshenv"
+#    dest: "/home/{{ current_user }}/.zshenv"
+#    owner: "{{ current_user }}"
+#    group: "{{ current_user }}"
+#    mode: 0700
 
 - name: Copy zsh files to default zsh config directory
   copy:
@@ -33,6 +33,7 @@
     group: "{{ current_user }}"
     mode: 0700
   with_items:
+   - { src: 'zshenv', dst: '.zshenv'}
     - { src: 'zshrc', dst: '.zshrc'}
     - { src: 'zlogin', dst: '.zlogin'}
     - { src: 'zlogout', dst: '.zlogout'}
@@ -96,8 +97,11 @@
   args:
     chdir: "/home/{{ current_user }}/.config/zsh/antigen"
 
+- name: source .zshenv file 
+  shell: "source /home/{{ current_user }}/.zshenv"
+
 - name: Install / update ZSH plugins with Antigen
   expect:
-    command: "/usr/bin/zsh -i -c 'antigen update && antigen-apply'"
+    command: "/usr/bin/zsh -i -c 'source ~/.config/zsh/.zshrc && antigen update && antigen-apply'"
     responses:
       (.*)Would you like to install Antigen now?(.*): "y"

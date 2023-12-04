@@ -3,13 +3,12 @@
   set_fact:
     current_user: "{{ lookup('env', 'USER') }}"
 
-- name: Check if the firefox theme directory exists
+- name: Check if the alacritty themes directory exists
   stat:
-    path: "/home/{{ current_user }}/.config/alacritty/alacritty-theme/themes"
+    path: "/home/{{ current_user }}/.config/alacritty/themes"
   register: alacritty_themes_installed
 
-- name: users | andreas | clone firefox theme
-  tags: dotfiles,andreas,users,gnome,themes
+- name: clone alacritty themes
   git:
     repo: https://github.com/alacritty/alacritty-theme
     dest: /home/{{ current_user }}/.config/alacritty/

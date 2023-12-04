@@ -97,9 +97,6 @@
   args:
     chdir: "/home/{{ current_user }}/.config/zsh/antigen"
 
-- name: source .zshenv file 
-  shell: "source /home/{{ current_user }}/.zshenv"
-
 - name: Install / update ZSH plugins with Antigen
   become: no
   become_user: "{{ current_user }}"

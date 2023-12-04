@@ -101,6 +101,8 @@
   shell: "source /home/{{ current_user }}/.zshenv"
 
 - name: Install / update ZSH plugins with Antigen
+  become: no
+  become_user: "{{ current_user }}"
   expect:
     command: "/usr/bin/zsh -i -c 'source ~/.config/zsh/.zshrc && antigen update && antigen-apply'"
     responses:

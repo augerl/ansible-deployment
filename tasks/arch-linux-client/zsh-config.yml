@@ -91,6 +91,4 @@
     - "matrix.sh"
 
 - name: Install / update ZSH plugins with Antigen
-  shell: "antigen update && antigen-apply"
-  args:
-    exectuable: /usr/bin/zsh
+  shell: "usr/bin/zsh -i -c 'antigen update && antigen-apply'"

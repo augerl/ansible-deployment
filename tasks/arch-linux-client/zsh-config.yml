@@ -17,13 +17,13 @@
     - { dir: 'utils' }
     - { dir: 'antigen' }
 
-#- name: Copy zsh environment file to home directory
-#  copy:
-#    src: "files/zsh/zshenv"
-#    dest: "/home/{{ current_user }}/.zshenv"
-#    owner: "{{ current_user }}"
-#    group: "{{ current_user }}"
-#    mode: 0700
+- name: Copy zsh environment file to home directory
+  copy:
+    src: "files/zsh/zshenv"
+    dest: "/home/{{ current_user }}/.zshenv"
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0700
 
 - name: Copy zsh files to default zsh config directory
   copy:

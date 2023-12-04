@@ -1,0 +1,84 @@
+---
+- name: Get current username
+  set_fact:
+    current_user: "{{ lookup('env', 'USER') }}"
+
+- name: create directories for zsh
+  file:
+    path: /home/{{ current_user }}/.config/zsh/{{ item.dir }}
+    state: directory
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0700
+  with_items:
+    - { dir: 'aliases' }
+    - { dir: 'helpers' }
+    - { dir: 'lib' }
+    - { dir: 'utils' }
+
+- name: Copy zsh files to default zsh root directory
+  copy:
+    src: "files/zsh/{{ item.src }}"
+    dest: "/home/{{ current_user }}/.config/zsh/{{ item.dst }}"
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0700
+  with_items:
+    - { src: 'zshenv', dst: '.zshenv'}
+    - { src: 'zshrc', dst: '.zshrc'}
+    - { src: 'zlogin', dst: '.zlogin'}
+    - { src: 'zlogout', dst: '.zlogout'}
+    - { src: 'p10k.zsh', dst: '.p10k.zsh'}
+
+- name: Copy zsh files to zsh aliases directory
+  copy:
+    src: "files/zsh/aliases/{{ item }}"
+    dest: "/home/{{ current_user }}/.config/zsh/aliases/{{ item }}"
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0700
+  with_items:
+    - alias-tips.zsh
+    - general.zsh
+    - git.zsh
+
+- name: Copy zsh files to zsh helpers directory
+  copy:
+    src: "files/zsh/helpers/{{ item }}"
+    dest: "/home/{{ current_user }}/.config/zsh/helpers/{{ item }}"
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0700
+  with_items:
+    - "import-plugins.zsh"
+    - "misc-stuff.zsh"
+    - "setup-antigen.zsh"
+
+- name: Copy zsh files to zsh lib directory
+  copy:
+    src: "files/zsh/lib/{{ item }}"
+    dest: "/home/{{ current_user }}/.config/zsh/lib/{{ item }}"
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0700
+  with_items:
+    - "colors.zsh"
+    - "completion.zsh"
+    - "cursor.zsh"
+    - "expansions.zsh"
+    - "history.zsh"
+    - "key-bindings.zsh"
+    - "navigation.zsh"
+    - "surround.zsh"
+    - "term-title.zsh"
+
+- name: Copy zsh files to zsh lib directory
+  copy:
+    src: "files/zsh/utils/{{ item }}"
+    dest: "/home/{{ current_user }}/.config/zsh/utils/{{ item }}"
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: a+x
+  with_items:
+    - "welcome-banner.sh"
+    - "matrix.sh"

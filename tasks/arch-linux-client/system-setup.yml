@@ -235,17 +235,6 @@
     chdir: /home/{{ current_user }}/projects/yay
   when: yay_check.rc != 0
 
-#- name: Install yay
-#  expect:
-#  timeout: 300
-#  become: no
-#  args:
-#    command: makepkg -si
-#    chdir: /home/{{ current_user }}/projects/yay
-#    responses:
-#      (.*)Proceed with installation(.*): "yes"
-#  when: yay_check.rc != 0
-
 - name: copy tlp config file to /etc
   copy:
     src: files/tlp/tlp.conf

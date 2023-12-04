@@ -1,0 +1,22 @@
+# Set XDG directories
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_BIN_HOME="${HOME}/.local/bin"
+export XDG_LIB_HOME="${HOME}/.local/lib"
+export XDG_CACHE_HOME="${HOME}/.cache"
+
+# Set default applications
+export EDITOR="vim"
+export TERMINAL="alacritty"
+export BROWSER="firefox"
+export PAGER="less"
+
+## Respect XDG directories
+export ADOTDIR="${XDG_CACHE_HOME}/zsh/antigen"
+export GIT_CONFIG="${XDG_CONFIG_HOME}/git/.gitconfig"
+export TMUX_PLUGIN_MANAGER_PATH="${XDG_DATA_HOME}/tmux/plugins"
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+export ZLIB="${ZDOTDIR}/lib"
+
+# Encodings, languges and misc settings
+export LANG='de_AT.UTF-8';

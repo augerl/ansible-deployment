@@ -232,7 +232,7 @@
   expect:
   become: no
   args:
-    command: makepkg -si
+    command: yes | makepkg -si
     chdir: /home/{{ current_user }}/projects/yay
     responses:
       (.*)Proceed with installation(.*): "yes"

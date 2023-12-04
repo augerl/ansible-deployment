@@ -15,6 +15,7 @@
     - { dir: 'helpers' }
     - { dir: 'lib' }
     - { dir: 'utils' }
+    - { dir: 'antigen' }
 
 - name: Copy zsh environment file to home directory
   copy:
@@ -90,5 +91,13 @@
     - "welcome-banner.sh"
     - "matrix.sh"
 
+- name: Download antigen for zsh
+  shell: "curl -L git.io/antigen > antigen.zsh" 
+  args:
+    chdir: "/home/{{ current_user }}/.config/zsh/antigen"
+
 - name: Install / update ZSH plugins with Antigen
-  shell: "/usr/bin/zsh -i -c 'antigen update && antigen-apply'"
+  expect:
+    shell: "/usr/bin/zsh -i -c 'antigen update && antigen-apply'"
+    responses:
+      (.*)Would you like to install Antigen now?(.*): "y"

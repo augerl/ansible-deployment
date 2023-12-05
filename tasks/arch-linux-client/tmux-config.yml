@@ -36,7 +36,7 @@
     group: "{{ current_user }}"
     mode: 0600
 
-- name: Download antigen for zsh
+- name: Download and install tmux plugins
   shell: "sh install_plugins"
   become: no
   args:

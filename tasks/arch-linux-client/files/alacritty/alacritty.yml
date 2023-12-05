@@ -4,6 +4,7 @@ shell:
     - -l
     - -c
     - "tmux attach || tmux"
+    - "tmux source-file ~/.config/tmux/tmux.conf"
 
 live_config_reload: true
 
@@ -49,4 +50,4 @@ env:
   TERM: xterm-256color
 
 import:
- - ~/.config/alacritty/themes/terminal_app.yml
+ - ~/.config/alacritty/themes/terminal_app.yaml

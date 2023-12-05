@@ -3,15 +3,10 @@
   set_fact:
     current_user: "{{ lookup('env', 'USER') }}"
 
-- name: install gnome-extensions-cli with pipx
-  become: no
-  become_user: "{{ current_user }}"
-  shell: "pipx install gnome-extensions-cli --system-site-packages"
-
-- name: ensure path for user
-  become: no
-  become_user: "{{ current_user }}"
-  shell: "pipx ensurepath"
+- name: install gnome-extensions-cli
+  pipx:
+    name: gnome-extensions-cli
+    system-site_packages: true
 
 - name: Check if gext is installed
   command: "which gext"

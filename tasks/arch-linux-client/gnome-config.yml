@@ -57,7 +57,6 @@
     - "gsconnect@andyholmes.github.io"
     - "blur-my-shell@aunetx"
     - "clipboard-indicator@tudmotu.com"
-    - "extendedgestures@piannucci.github.com"
 
 - name: check if the theme directory exists
   stat:

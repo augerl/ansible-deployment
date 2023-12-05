@@ -1,4 +1,8 @@
 ---
+- name: Get current username
+  set_fact:
+    current_user: "{{ lookup('env', 'USER') }}"
+
 - name: install gnome-extensions-cli with pipx
   become: no
   become_user: "{{ current_user }}"

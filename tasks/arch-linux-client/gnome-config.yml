@@ -41,6 +41,7 @@
 
 - name: Check if gext is installed
   shell: "which gext"
+  args:
     executable: /bin/zsh
   register: gext_check
 

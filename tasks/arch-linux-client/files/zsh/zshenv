@@ -5,6 +5,9 @@ export XDG_BIN_HOME="${HOME}/.local/bin"
 export XDG_LIB_HOME="${HOME}/.local/lib"
 export XDG_CACHE_HOME="${HOME}/.cache"
 
+# Set Python pipx path variable
+export PATH="$PATH:/home/andreas/.local/bin"
+
 # Set default applications
 export EDITOR="vim"
 export TERMINAL="alacritty"

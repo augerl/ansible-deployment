@@ -4,6 +4,8 @@
     current_user: "{{ lookup('env', 'USER') }}"
 
 - name: install gnome-extensions-cli
+  become: no
+  become_user: "{{ username }}"
   community.general.pipx:
     name: gnome-extensions-cli
     system_site_packages: true

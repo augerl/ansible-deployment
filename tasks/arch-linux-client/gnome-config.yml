@@ -5,7 +5,7 @@
 
 - name: install gnome-extensions-cli
   become: no
-  become_user: "{{ username }}"
+  become_user: "{{ current_user }}"
   community.general.pipx:
     name: gnome-extensions-cli
     system_site_packages: true

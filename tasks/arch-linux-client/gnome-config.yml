@@ -45,3 +45,76 @@
     executable: /bin/zsh
   register: gext_check
 
+- name: install a list of gnome extensions
+  shell: "gext install {{ item }}"
+  args:
+    executable: /bin/zsh
+  with_items:
+    - "user-theme@gnome-shell-extensions.gcampax.github.com"
+    - "logomenu@aryan_k"
+    - "just-perfection-desktop@just-perfection"
+    - "espresso@coadmunkee.github.com"
+    - "gsconnect@andyholmes.github.io"
+    - "blur-my-shell@aunetx"
+    - "clipboard-indicator@tudmotu.com"
+    - "extendedgestures@piannucci.github.com"
+
+- name: check if the theme directory exists
+  stat:
+    path: "/home/{{ current_user }}/.themes/Colloid"
+  register: colloid_installed
+
+- name: clone colloid gtk theme
+  git:
+    repo: https://github.com/vinceliuice/Colloid-gtk-theme.git
+    dest: "/home/{{ current_user }}/projects/gnome-themes/colloid-gtk-theme"
+    force: yes
+  when: not colloid_installed.stat.exists
+
+- name: install colloid gtk theme
+  become_user: "{{ current_user }}"
+  command: "/home/{{ current_user }}/projects/gnome-themes/colloid-gtk-theme/install.sh --color --libadwaita --tweaks rimless"
+  when: not colloid_installed.stat.exists
+
+- name: Check if the icon directory exists
+  stat:
+    path: /home/{{ current_user }}/.local/share/icons/colloid-icon-theme
+  register: colloid_icons_installed
+
+- name: clone colloid icon theme
+  git:
+    repo: https://github.com/vinceliuice/Colloid-icon-theme.git
+    dest: /home/{{ current_user }}/.local/share/icons/colloid-icon-theme
+    force: yes
+  when: not colloid_icons_installed.stat.exists
+
+- name: install colloid icon them
+  become_user: "{{ current_user }}"
+  command: /home/{{ current_user }}/.local/share/icons/colloid-icon-theme/install.sh
+  when: not colloid_icons_installed.stat.exists
+
+- name: Check if the cursor directory exists
+  stat:
+    path: /home/{{ current_user }}/.local/share/icons/whiteSur-cursors
+  register: whitesur_cursors_installed
+
+- name: clone cursor themes
+  git:
+    repo: https://github.com/vinceliuice/WhiteSur-cursors.git
+    dest: /home/{{ current_user }}/.local/share/icons/whitesur-cursors
+    force: yes
+  when: not whitesur_cursors_installed.stat.exists
+
+- name: install white sur cursors
+  become_user: "{{ current_user }}"
+  command: /home/{{ current_user }}/.local/share/icons/whitesur-cursors/install.sh
+  when: not whitesur_cursors_installed.stat.exists
+
+- name: Create cron job to sync gnome settings
+  cron:
+    name: sync-gnome-settings-and-extensions
+    minute: "0"
+    hour: "*/4"
+    job: "ansible-pull --url https://github.com/augerl/ansible-deployment.git arch-gnome-settings-playbook.yml"
+
+

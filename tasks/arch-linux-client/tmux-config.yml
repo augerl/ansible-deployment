@@ -37,7 +37,7 @@
     mode: 0600
 
 - name: Download antigen for zsh
-  shell: "install_plugins"
+  shell: "sh install_plugins"
   become: no
   args:
     chdir: "/home/{{ current_user }}/.config/tmux/plugins/tpm/bin"

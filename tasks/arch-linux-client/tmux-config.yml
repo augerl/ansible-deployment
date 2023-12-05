@@ -4,29 +4,29 @@
   set_fact:
     current_user: "{{ lookup('env', 'USER') }}"
 
-- name: clone tmux-plugin-manager repository
-  git:
-    repo: https://github.com/tmux-plugins/tpm.git
-    dest: /home/{{ current_user }}/.config/tmux/plugins/tpm
-    force: yes
+#- name: clone tmux-plugin-manager repository
+#  git:
+#    repo: https://github.com/tmux-plugins/tpm.git
+#    dest: /home/{{ current_user }}/.config/tmux/plugins/tpm
+#    force: yes
 
-- name:  clone tmux-completion plugin repository
-  git:
-    repo: https://github.com/srsudar/tmux-completion.git
-    dest: /home/{{ current_user }}/.config/tmux/plugins/completion
-    force: yes
+#- name:  clone tmux-completion plugin repository
+#  git:
+#    repo: https://github.com/srsudar/tmux-completion.git
+#    dest: /home/{{ current_user }}/.config/tmux/plugins/completion
+#    force: yes
 
-- name: clone tmux-continuum plugin repository
-  git:
-    repo: https://github.com/tmux-plugins/tmux-continuum
-    dest: /home/{{ current_user }}/.config/tmux/plugins/continuum
-    force: yes
+#- name: clone tmux-continuum plugin repository
+#  git:
+#    repo: https://github.com/tmux-plugins/tmux-continuum
+#    dest: /home/{{ current_user }}/.config/tmux/plugins/continuum
+#    force: yes
 
-- name:  clone tmux-resurrect plugin repository
-  git:
-    repo: https://github.com/tmux-plugins/tmux-resurrect
-    dest: /home/{{ current_user }}/.config/tmux/plugins/resurrect
-    force: yes
+#- name:  clone tmux-resurrect plugin repository
+#  git:
+#    repo: https://github.com/tmux-plugins/tmux-resurrect
+#    dest: /home/{{ current_user }}/.config/tmux/plugins/resurrect
+#    force: yes
 
 - name: copy tmux config
   copy:
@@ -36,9 +36,9 @@
     group: "{{ current_user }}"
     mode: 0600
 
-- name: Download and install tmux plugins
-  shell: "sh install_plugins"
-  become: no
-  become_user: "{{ current_user }}"
-  args:
-    chdir: "/home/{{ current_user }}/.config/tmux/plugins/tpm/bin"
+#- name: Download and install tmux plugins
+#  shell: "sh install_plugins"
+#  become: no
+#  become_user: "{{ current_user }}"
+#  args:
+#    chdir: "/home/{{ current_user }}/.config/tmux/plugins/tpm/bin"

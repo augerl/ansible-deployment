@@ -53,3 +53,9 @@
       
       # Personal
       - com.bitwarden.desktop     # Password manager
+
+# Make Flatpak Apps use GTK Theme 
+- name: make flatpak use GTK4 Theme by default
+  become: yes
+  become_user: "{{ current_user }}"
+  command: sudo flatpak override --filesystem=xdg-config/gtk-4.0

@@ -1,1 +1,9 @@
 ---
+- name: install gnome-extensions-cli with pipx
+  become: no
+  become_user: "{{ current_user }}"
+  shell: "pipx install gnome-extensions-cli --system-site-packages"
+
+- name: Check if gext is installed
+  command: "which gext"
+  register: gext_check

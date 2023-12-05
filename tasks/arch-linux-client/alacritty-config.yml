@@ -24,8 +24,8 @@
     mode: 0600
     force: no
 
-- name: adapt the alacritty desktop file to always start in wayland
-  lineinfile:
+- name: make alacritty always start in wayland
+  replace:
     path: /usr/share/applications/Alacritty.desktop
     regexp: '^Exec=alacritty'
-    line: 'Exec=env -u WAYLAND_DISPLAY alacritty'
+    replace: 'Exec=env -u WAYLAND_DISPLAY alacritty'

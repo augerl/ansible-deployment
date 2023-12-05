@@ -6,7 +6,7 @@
 - name: install gnome-extensions-cli
   community.general.pipx:
     name: gnome-extensions-cli
-    system-site_packages: true
+    system_site_packages: true
 
 - name: Check if gext is installed
   command: "which gext"

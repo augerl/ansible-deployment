@@ -1,6 +1,6 @@
 # Directory for all-things ZSH config
 zsh_dir=${${ZDOTDIR}:-$HOME/.config/zsh}
-utils_dir="${XDG_CONFIG_HOME}/utils"
+utils_dir="${XDG_CONFIG_HOME}/zsh/utils"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return

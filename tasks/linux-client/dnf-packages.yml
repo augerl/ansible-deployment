@@ -4,7 +4,7 @@
   changed_when: False
 
 - name: Enable copr package repositories
-  copr:
+  community.general.copr:
     host: copr.fedorainfracloud.org
     state: enabled
     name: "{{ item }}"

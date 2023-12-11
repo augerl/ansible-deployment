@@ -69,14 +69,17 @@
     path: /etc/locale.gen
     regexp: '^#de_AT.UTF-8 UTF-8'
     line: 'de_AT.UTF-8 UTF-8'
+  when: current_distribution == 'Arch'
 
 - name: Update locales 
   command: locale-gen
+  when: current_distribution == 'Arch'
 
 - name: Set locales with dconf
   dconf:
     key: "/system/locale/region"
     value: "'de_AT.UTF-8'"
+  when: current_distribution == 'Arch'
 
 - name: Hide unused applications from Application Launcher
   blockinfile:

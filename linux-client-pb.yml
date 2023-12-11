@@ -5,15 +5,14 @@
   gather_facts: yes
 
   tasks:
-    #- name: Get current Linux Distribution
-    #  set_fact:
-    #    current_distribution: "{{ ansible_facts.distribution }}"
-    
-    - inlcude_tasks: tasks/linux-client/system-setup.yml
+    - name: Get current Linux Distribution
+      set_fact:
+        current_distribution: "{{ ansible_facts.distribution }}"
 
-#    - name: Deploy general linux client settings
-#      include_tasks: tasks/linux-client/system-setup.yml
-#
+    - name: Deploy general linux client settings
+      include_tasks:
+        file: tasks/linux-client/system-setup.yml
+
 #    - name: Deploy Arch Linux packages with pacman  
 #      include_tasks: tasks/linux-client/pacman-packages.yml
 #      when: current_distribution == 'Arch'

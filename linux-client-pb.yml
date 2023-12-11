@@ -8,29 +8,31 @@
     - name: Get current Linux Distribution
       set_fact:
         current_distribution: "{{ ansible_facts.distribution }}"
+    
+    - inlcude_tasks: tasks/linux-client/system-setup.yml
 
-    - name: Deploy general linux client settings
-      include_tasks: tasks/linux-client/system-setup.yml
-
-    - name: Deploy Arch Linux packages with pacman  
-      include_tasks: tasks/linux-client/pacman-packages.yml
-      when: current_distribution == 'Arch'
-
-    - name: Deploy Fedora Packages with DNF
-      include_tasks:
-      when: current_distribution == 'Fedora'
-
-    - name: Deploy Flatpak packages
-      include_tasks: tasks/linux-client/flatpak-packages.yml
-
-    - name: Deploy zsh settings
-      include_tasks: tasks/linux-client/zsh-config.yml
-
-    - name: Deploy alacritty settings
-      include_tasks: tasks/linux-client/alacritty-config.yml
-
-    - name: Deploy tmux settings
-      include_tasks: tasks/linux-client/tmux-config.yml
-
-    - name: Deploy gnome settings and themes
-      include_tasks: tasks/linux-client/gnome-config.yml
+#    - name: Deploy general linux client settings
+#      include_tasks: tasks/linux-client/system-setup.yml
+#
+#    - name: Deploy Arch Linux packages with pacman  
+#      include_tasks: tasks/linux-client/pacman-packages.yml
+#      when: current_distribution == 'Arch'
+#
+#    - name: Deploy Fedora Packages with DNF
+#      include_tasks:
+#      when: current_distribution == 'Fedora'
+#
+#    - name: Deploy Flatpak packages
+#      include_tasks: tasks/linux-client/flatpak-packages.yml
+#
+#    - name: Deploy zsh settings
+#      include_tasks: tasks/linux-client/zsh-config.yml
+#
+#    - name: Deploy alacritty settings
+#      include_tasks: tasks/linux-client/alacritty-config.yml
+#
+#    - name: Deploy tmux settings
+#      include_tasks: tasks/linux-client/tmux-config.yml
+#
+#    - name: Deploy gnome settings and themes
+#      include_tasks: tasks/linux-client/gnome-config.yml

@@ -1,4 +1,8 @@
 ---
+#################
+### Variables ###
+#################
+
 - name: Get current username
   set_fact:
     current_user: "{{ lookup('env', 'USER') }}"
@@ -18,6 +22,15 @@
     name: inter-font
     state: present
   when: inter_font_status.stat.exists == false
+
+#######################
+### dconf setttings ###
+#######################
+
+- name: show all input sources
+  dconf:
+    key: "/org/gnome/desktop/input-sources/show-all-sources"
+    value:  true
 
 - name: Set Inter font as interface font
   dconf:

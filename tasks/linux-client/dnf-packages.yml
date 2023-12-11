@@ -8,7 +8,7 @@
     host: copr.fedorainfracloud.org
     state: enabled
     name: "{{ item }}"
-  with_item:
+  with_items:
     - "fuhrmann/ctop"
     - "atim/gping"
     - "petersen/broot"

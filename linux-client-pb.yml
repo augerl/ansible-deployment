@@ -5,9 +5,9 @@
   gather_facts: yes
 
   tasks:
-    - name: Get current Linux Distribution
-      set_fact:
-        current_distribution: "{{ ansible_facts.distribution }}"
+    #- name: Get current Linux Distribution
+    #  set_fact:
+    #    current_distribution: "{{ ansible_facts.distribution }}"
     
     - inlcude_tasks: tasks/linux-client/system-setup.yml
 

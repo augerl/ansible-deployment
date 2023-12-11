@@ -1,0 +1,92 @@
+---
+- name: pre-run | update package cache (arch)
+  package: update_cache=yes
+  changed_when: False
+
+- name: install pacman packages
+  package:
+    state: latest
+    name:
+      # Essentials
+      - git           # Version controll
+      - neovim        # Text editor
+      - ranger        # Directory browser
+      - tmux          # Term multiplexer
+      - wget          # Download files
+      - zsh           # interactive shell
+      - ncdu          # show disk usage
+      - net-tools     # control network subsystem
+      - rsync         # advanced cp and mv
+      - sshfs         # SSH file system
+      - nfs-utils     # creating and mounting nfs shares
+      - ruby
+      - man-db
+      - man-pages
+
+      # CLI Power Basics
+      - aria2         # Resuming download util (better wget)
+      - bat           # Output highlighting (better cat)
+      - broot         # Interactive directory navigation
+      - ctags         # Indexing of file info + headers
+      - diff-so-fancy # Readable file compares (better diff)
+      - duf           # Get info on mounted disks (better df)
+      - exa           # Listing files with info (better ls)
+      - fzf           # Fuzzy file finder and filtering
+      - hyperfine     # Benchmarking for arbitrary commands
+      - just          # Powerful command runner (better make)
+      - jq            # JSON parser, output and query files
+      - most          # Multi-window scroll pager (better less)
+      - procs         # Advanced process viewer (better ps)
+      - ripgrep       # Searching within files (better grep)
+      - scrot         # Screenshots programmatically via CLI
+      - sd            # RegEx find and replace (better sed)
+      - thefuck       # Auto-correct miss-typed commands
+      - tealdeer      # Reader for command docs (better man)
+      - tree          # Directory listings as tree structure
+      - tokei         # Count lines of code (better cloc)
+      - trash-cli     # Record and restore removed files
+      - xsel          # Copy paste access to the X clipboard
+      - zoxide        # Auto-learning navigation (better cd)      
+      - lsof          # List open files
+      - curl          # transfer data via multiple protocols
+
+      # Security Utilities
+      - clamav        # Open source virus scanning suite
+      - cryptsetup    # Reading / writing encrypted volumes
+      - gnupg         # PGP encryption, signing and verifying
+      - git-crypt     # Transparent encryption for git repos
+      - lynis         # Scan system for common security issues
+      - openssl       # Cryptography and SSL/TLS Toolkit
+      - rkhunter      # Search / detect potential root kits
+      - nmap          # Network Mapper
+      - whois         # retrieve domain information
+
+      # Monitoring, management and stats
+      - btop          # Live system resource monitoring
+      - bmon          # Bandwidth utilization monitor
+      - powertop      # Check power utilization of hardware
+      - ctop          # Container metrics and monitoring
+      - gping         # Interactive ping tool, with graph
+      - glances       # Resource monitor + web and API
+      - goaccess      # Web log analyzer and viewer
+      - speedtest-cli # Command line speed test utility
+      - iotop         # measure input/output
+
+      # CLI Fun
+      #- cowsay        # Outputs message with ASCII art cow
+      - figlet        # Outputs text as 3D ASCII word art
+      - lolcat        # Rainbow colored terminal output
+      - neofetch      # Show off distro and system info
+
+      # Gnome related stuff
+      - gtk-engine-murrine
+      - gnome-browser-connector
+      - libgtop
+      - lm_sensors
+      - gnome-icon-theme-extras
+
+      # Applications
+      - firefox
+      - thunderbird
+      - alacritty
+

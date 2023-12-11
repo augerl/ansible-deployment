@@ -1,7 +1,0 @@
----
-- name: Arch Gnome Settings
-  hosts: workstation
-  gather_facts: yes
-
-  tasks:
-    - include_tasks: tasks/arch-linux-client/gnome-prefs.yml

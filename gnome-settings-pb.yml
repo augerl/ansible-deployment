@@ -1,0 +1,7 @@
+---
+- name: Gnome Settings
+  hosts: workstation
+  gather_facts: yes
+
+  tasks:
+    - include_tasks: tasks/linux-client/gnome-prefs.yml

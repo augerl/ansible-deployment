@@ -1,5 +1,9 @@
 ---
-- name: Install some necassary system stuff
+- name: Get current Linux Distribution
+  set_fact:
+    current_distribution: "{{ ansible_facts.distribution }}"
+
+- name: Install some necassary system stuff on Arch
   package:
     name:
       - git
@@ -12,6 +16,21 @@
       - tlp-rdw
       - go
     state: latest
+  when: current_distribution == 'Arch'
+
+- name: Install some necassary system stuff on Fedora
+  package:
+    name:
+      - git
+      - cronie
+      - python3-psutil
+      - python3-pexpect
+      - python3-pip
+      - tlp
+      - tlp-rdw
+      - go
+    state: latest
+  when: current_distribution == 'Fedora'
 
 - name: start and enable cronie daemon
   service:
@@ -207,12 +226,13 @@
   stat:
     path: "/home/{{ current_user }}/projects/yay"
   register: yay_status
+  when: current_distribution == 'Arch'
 
 - name: clone yay repository
   git:
     repo: https://aur.archlinux.org/yay.git
     dest: /home/{{ current_user }}/projects/yay
-  when: yay_status.stat.exists == false
+  when: (current_distribution == 'Arch') and (yay_status.stat.exists == false)
 
 - name: make yay directory accessible
   file:
@@ -222,18 +242,20 @@
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
     mode: 0700
+  when: (current_distribution == 'Arch') and (yay_status.stat.exists == true)
 
 - name: Check if yay is installed
   command: "which yay"
   register: yay_check
   ignore_errors: true
+  when: current_distribution == 'Arch'
 
 - name: install yay
   become: no
   shell: "yes | makepkg -si"
   args:
     chdir: /home/{{ current_user }}/projects/yay
-  when: yay_check.rc != 0
+  when: (current_distribution == 'Arch') and (yay_check.rc != 0)
 
 - name: copy tlp config file to /etc
   copy:

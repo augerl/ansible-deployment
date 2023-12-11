@@ -64,22 +64,34 @@
 - name: Update Font cache 
   command: fc-cache -fv
 
-- name: Uncomment the line in /etc/locale.gen
+- name: Uncomment the line in /etc/locale.gen on Arch Linux
   lineinfile:
     path: /etc/locale.gen
     regexp: '^#de_AT.UTF-8 UTF-8'
     line: 'de_AT.UTF-8 UTF-8'
   when: current_distribution == 'Arch'
 
-- name: Update locales 
+- name: Update locales on Arch Linux
   command: locale-gen
   when: current_distribution == 'Arch'
 
-- name: Set locales with dconf
+- name: Set locales with dconf on Arch Linux
   dconf:
     key: "/system/locale/region"
     value: "'de_AT.UTF-8'"
   when: current_distribution == 'Arch'
+
+- name: set locales language on fedora
+  command: localectl set-locale LANG=en_US.UTF-8
+  when: current_distribution == 'Fedora'
+
+- name: set locales keymaps on fedora
+  command: localectl set-keymap at
+  when: current_distribution == 'Fedora'
+
+- name: set locales x11 layout on fedora
+  command: localectl set-x11-keymap at
+  when: current_distribution == 'Fedora'
 
 - name: Hide unused applications from Application Launcher
   blockinfile:

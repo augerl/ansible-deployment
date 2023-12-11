@@ -51,7 +51,7 @@
 
 - name: Download Meslo Nerd Font
   unarchive:
-    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip
+    src: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Meslo.tar.xz
     dest: "/usr/share/fonts/Meslo"
     remote_src: yes
   when: meslo_font_status.stat.exists == false

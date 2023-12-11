@@ -3,8 +3,8 @@
   package: update_cache=yes
   changed_when: False
 
-- name: install pacman packages
-  package:
+- name: install dnf packages
+  dnf:
     state: latest
     name:
       # Essentials
@@ -79,11 +79,10 @@
       - neofetch      # Show off distro and system info
 
       # Gnome related stuff
-      - gtk-engine-murrine
       - gnome-browser-connector
-      - libgtop
+      - libgtop2
       - lm_sensors
-      - gnome-icon-theme-extras
+      - gnome-icon-theme-noarch
 
       # Applications
       - firefox

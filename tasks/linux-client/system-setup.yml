@@ -19,7 +19,7 @@
   when: current_distribution == 'Arch'
 
 - name: Install some necassary system stuff on Fedora
-  package:
+  dnf:
     name:
       - git
       - cronie

@@ -3,6 +3,42 @@
   set_fact:
     current_user: "{{ lookup('env', 'USER') }}"
 
+- name: Check if Inter font directory exists
+  stat:
+    path: "/usr/share/fonts/inter"
+  register: inter_font_status
+
+- name: Check if Meslo font directory exists
+  stat:
+    path: "/usr/share/fonts/Meslo"
+  register: meslo_font_status
+
+- name: Install Inter font if not present
+  package:
+    name: inter-font
+    state: present
+  when: inter_font_status.stat.exists == false
+
+- name: Set Inter font as interface font
+  dconf:
+    key: "/org/gnome/desktop/interface/font-name"
+    value: "'Inter Light 11'"
+
+- name: Set Inter font as document font
+  dconf:
+    key: "/org/gnome/desktop/interface/document-font-name"
+    value: "'Inter Light 11'"
+
+- name: Set Inter font as titlebar font
+  dconf:
+    key: "/org/gnome/desktop/wm/preferences/titlebar-font"
+    value: "'Inter Bold 11'"
+
+- name: Set Meslo as Terminal font
+  dconf:
+    key: "/org/gnome/desktop/interface/monospace-font-name"
+    value: "'MesloLGS Nerd Font 10'"
+
 - name: set color scheme
   become_user: "{{ current_user }}"
   dconf:

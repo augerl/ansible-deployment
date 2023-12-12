@@ -64,7 +64,7 @@
 #    - "gsconnect@andyholmes.github.io"
 #    - "blur-my-shell@aunetx"
 #    - "clipboard-indicator@tudmotu.com"
-  when: gext_check.rc == 1
+#  when: gext_check.rc == 1
 
 - name: check if the theme directory exists
   stat:

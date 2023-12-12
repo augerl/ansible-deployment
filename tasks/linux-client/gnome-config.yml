@@ -112,8 +112,5 @@
 - name: Create cron job to sync gnome settings
   cron:
     name: sync-gnome-settings-and-extensions
-    minute: "0"
-    hour: "*/4"
     job: "ansible-pull --url https://github.com/augerl/ansible-deployment.git gnome-settings-pb.yml"
-
-
+    special_time: reboot

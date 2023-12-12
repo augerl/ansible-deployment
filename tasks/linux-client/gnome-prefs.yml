@@ -21,6 +21,11 @@
 ### dconf setttings ###
 #######################
 
+- name: disable weather service location
+  dconf:
+    key: "/org/gnome/calendar/weather-settings"
+    value: false
+
 - name: show all input sources
   dconf:
     key: "/org/gnome/desktop/input-sources/show-all-sources"

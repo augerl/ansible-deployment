@@ -83,7 +83,7 @@
 - name: install colloid gtk theme
   become: no
   become_user: "{{ current_user }}"
-  command: "/home/{{ current_user }}/projects/gnome-themes/colloid-gtk-theme/install.sh --color --libadwaita --tweaks rimless"
+  command: "/home/{{ current_user }}/projects/gnome-themes/colloid-gtk-theme/install.sh --color dark --libadwaita --tweaks rimless"
   when: not colloid_installed.stat.exists
 
 - name: Check if the icon directory exists

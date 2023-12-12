@@ -3,38 +3,67 @@
   set_fact:
     current_user: "{{ lookup('env', 'USER') }}"
 
-- name: install gnome-extensions-cli
+- name: Check if install-gnome-extensions directory already exists
+  stat:
+    path: "/home/{{ current_user }}/projects/install-gnome-extensions"
+  register: ige_status
+
+- name: clone ige repository
+  become_user: "{{ current_user }}"
+  git:
+    repo: https://github.com/ToasterUwU/install-gnome-extensions.git
+    dest: /home/{{ current_user }}/projects/install-gnome-extensions
+  when: ige_status.stat.exists == false
+
+- name: make ige script executable
+  file:
+    dest: /home/{{ current_user }}/projects/install-gnome-extensions/install-gnome-extensions.sh
+    mode: +x
+
+- name: copy gnome-extensions file to project directory
+  copy:
+    src: files/gnome-extensions/extension-list.txt
+    dest: /home/{{ current_user }}/projects/install-gnome-extensions/extension-list.txt
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+
+- name: install gnome extensions
   become: no
   become_user: "{{ current_user }}"
-  community.general.pipx:
-    name: gnome-extensions-cli
-    system_site_packages: true
+  shell: "/home/{{ current_user }}/projects/install-gnome-extensions/install-gnome-extensions.sh --enable --file /home/{{ current_user }}/projects/install-gnome-extensions/extension-list.txt"
 
-- name: source .zsh files again
-  become: no
-  become_user: "{{ current_user }}"
-  shell: "source ~/.zshenv && source ~/.config/zsh/.zshrc"
-  args:
-    executable: /bin/zsh
-
-- name: Check if gext is installed
-  shell: "which gext"
-  args:
-    executable: /bin/zsh
-  register: gext_check
-
-- name: install a list of gnome extensions
-  shell: "gext install {{ item }}"
-  args:
-    executable: /bin/zsh
-  with_items:
-    - "user-theme@gnome-shell-extensions.gcampax.github.com"
-    - "logomenu@aryan_k"
-    - "just-perfection-desktop@just-perfection"
-    - "espresso@coadmunkee.github.com"
-    - "gsconnect@andyholmes.github.io"
-    - "blur-my-shell@aunetx"
-    - "clipboard-indicator@tudmotu.com"
+#- name: install gnome-extensions-cli
+#  become: no
+#  become_user: "{{ current_user }}"
+#  community.general.pipx:
+#    name: gnome-extensions-cli
+#    system_site_packages: true
+#
+#- name: source .zsh files again
+#  become: no
+#  become_user: "{{ current_user }}"
+#  shell: "source ~/.zshenv && source ~/.config/zsh/.zshrc"
+#  args:
+#    executable: /bin/zsh
+#
+#- name: Check if gext is installed
+#  shell: "which gext"
+#  args:
+#    executable: /bin/zsh
+#  register: gext_check
+#
+#- name: install a list of gnome extensions
+#  shell: "gext install {{ item }}"
+#  args:
+#    executable: /bin/zsh
+#  with_items:
+#    - "user-theme@gnome-shell-extensions.gcampax.github.com"
+#    - "logomenu@aryan_k"
+#    - "just-perfection-desktop@just-perfection"
+#    - "espresso@coadmunkee.github.com"
+#    - "gsconnect@andyholmes.github.io"
+#    - "blur-my-shell@aunetx"
+#    - "clipboard-indicator@tudmotu.com"
   when: gext_check.rc == 1
 
 - name: check if the theme directory exists

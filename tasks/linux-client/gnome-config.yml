@@ -30,7 +30,7 @@
 - name: install gnome extensions
   become: no
   become_user: "{{ current_user }}"
-  shell: "/home/{{ current_user }}/projects/install-gnome-extensions/install-gnome-extensions.sh --enable --file /home/{{ current_user }}/projects/install-gnome-extensions/extension-list.txt"
+  shell: "sh /home/{{ current_user }}/projects/install-gnome-extensions/install-gnome-extensions.sh --enable --file /home/{{ current_user }}/projects/install-gnome-extensions/extension-list.txt"
 
 #- name: install gnome-extensions-cli
 #  become: no

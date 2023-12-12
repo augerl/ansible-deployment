@@ -72,6 +72,8 @@
   register: colloid_installed
 
 - name: clone colloid gtk theme
+  become: no
+  become_user: "{{ current_user }}"
   git:
     repo: https://github.com/vinceliuice/Colloid-gtk-theme.git
     dest: "/home/{{ current_user }}/projects/gnome-themes/colloid-gtk-theme"
@@ -79,6 +81,7 @@
   when: not colloid_installed.stat.exists
 
 - name: install colloid gtk theme
+  become: no
   become_user: "{{ current_user }}"
   command: "/home/{{ current_user }}/projects/gnome-themes/colloid-gtk-theme/install.sh --color --libadwaita --tweaks rimless"
   when: not colloid_installed.stat.exists
@@ -89,6 +92,8 @@
   register: colloid_icons_installed
 
 - name: clone colloid icon theme
+  become: no
+  become_user: "{{ current_user }}"
   git:
     repo: https://github.com/vinceliuice/Colloid-icon-theme.git
     dest: /home/{{ current_user }}/.local/share/icons/colloid-icon-theme
@@ -96,6 +101,7 @@
   when: not colloid_icons_installed.stat.exists
 
 - name: install colloid icon them
+  become: no
   become_user: "{{ current_user }}"
   command: /home/{{ current_user }}/.local/share/icons/colloid-icon-theme/install.sh
   when: not colloid_icons_installed.stat.exists
@@ -106,6 +112,8 @@
   register: whitesur_cursors_installed
 
 - name: clone cursor themes
+  become: no
+  become_user: "{{ current_user }}"
   git:
     repo: https://github.com/vinceliuice/WhiteSur-cursors.git
     dest: /home/{{ current_user }}/.local/share/icons/whitesur-cursors
@@ -113,6 +121,7 @@
   when: not whitesur_cursors_installed.stat.exists
 
 - name: install white sur cursors
+  become: no
   become_user: "{{ current_user }}"
   command: /home/{{ current_user }}/.local/share/icons/whitesur-cursors/install.sh
   when: not whitesur_cursors_installed.stat.exists
@@ -122,3 +131,4 @@
     name: sync-gnome-settings-and-extensions
     job: "ansible-pull --url https://github.com/augerl/ansible-deployment.git gnome-settings-pb.yml"
     special_time: reboot
+    user: "{{ current_user }}"

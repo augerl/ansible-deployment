@@ -213,7 +213,7 @@
   shell: "yes | makepkg -si"
   args:
     chdir: /home/{{ current_user }}/projects/yay
-  when: (current_distribution == 'Arch') and (yay_check.rc != 0)
+  when: yay_check.rc != 0
 
 - name: copy tlp config file to /etc
   copy:

@@ -16,6 +16,10 @@
       - tlp-rdw
       - go
       - inter-font
+      - curl
+      - wget
+      - jq
+      - gnome-extensions
     state: latest
 
 - name: start and enable cronie daemon

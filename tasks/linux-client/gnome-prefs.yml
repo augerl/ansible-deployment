@@ -17,12 +17,6 @@
     path: "/usr/share/fonts/Meslo"
   register: meslo_font_status
 
-- name: Install Inter font if not present
-  package:
-    name: inter-font
-    state: present
-  when: inter_font_status.stat.exists == false
-
 #######################
 ### dconf setttings ###
 #######################

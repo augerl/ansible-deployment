@@ -15,8 +15,8 @@
       - tlp
       - tlp-rdw
       - go
+      - inter-font
     state: latest
-  when: current_distribution == 'Arch'
 
 - name: start and enable cronie daemon
   service:
@@ -54,17 +54,14 @@
     path: /etc/locale.gen
     regexp: '^#de_AT.UTF-8 UTF-8'
     line: 'de_AT.UTF-8 UTF-8'
-  when: current_distribution == 'Arch'
 
 - name: Update locales on Arch Linux
   command: locale-gen
-  when: current_distribution == 'Arch'
 
 - name: Set locales with dconf on Arch Linux
   dconf:
     key: "/system/locale/region"
     value: "'de_AT.UTF-8'"
-  when: current_distribution == 'Arch'
 
 - name: Hide unused applications from Application Launcher
   blockinfile:

@@ -1,29 +1,7 @@
 ---
-- name: Install some necassary system stuff
-  package:
-    name:
-      - git
-      - base-devel
-      - cronie
-      - python-psutil
-      - python-pexpect
-      - python-pipx
-      - tlp
-      - tlp-rdw
-      - go
-    state: latest
-
 - name: Get current username
   set_fact:
     current_user: "{{ lookup('env', 'USER') }}"
-
-- name: Copy zsh environment file to home directory
-  copy:
-    src: "files/zsh/zshenv"
-    dest: "/home/{{ current_user }}/.zshenv"
-    owner: "{{ current_user }}"
-    group: "{{ current_user }}"
-    mode: 0700
 
 - name: install gnome-extensions-cli
   become: no
@@ -31,13 +9,6 @@
   community.general.pipx:
     name: gnome-extensions-cli
     system_site_packages: true
-
-#- name: Check if gext is installed
-#  become: no
-#  become_user: "{{ current_user }}"
-#  shell: pipx ensurepath
-#  args:
-#    executable: /bin/zsh
 
 - name: Check if gext is installed
   shell: "which gext"

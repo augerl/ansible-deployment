@@ -193,6 +193,11 @@
     dest: /home/{{ current_user }}/projects/yay
   when: yay_status.stat.exists == false
 
+- name: Check if yay directory already exists
+  stat:
+    path: "/home/{{ current_user }}/projects/yay"
+  register: yay_status
+
 - name: make yay directory accessible
   file:
     path: /home/{{ current_user }}/projects/yay

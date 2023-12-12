@@ -10,6 +10,13 @@
     name: gnome-extensions-cli
     system_site_packages: true
 
+- name: source .zsh files again
+  become: no
+  become_user: "{{ current_user }}"
+  shell: "source ~/.zshenv && source ~/.config/zsh/.zshrc"
+  args:
+    executable: /bin/zsh
+
 - name: Check if gext is installed
   shell: "which gext"
   args:

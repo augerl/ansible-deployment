@@ -5,9 +5,6 @@
   gather_facts: yes
 
   tasks:
-    - name: Get current Linux Distribution
-      set_fact:
-        current_distribution: "{{ ansible_facts.distribution }}"
 
     - name: Deploy general linux client settings
       include_tasks:
@@ -16,12 +13,6 @@
     - name: Deploy Arch Linux packages with pacman  
       include_tasks:
         file: tasks/linux-client/pacman-packages.yml
-      when: current_distribution == 'Arch'
-
-    - name: Deploy Fedora Packages with DNF
-      include_tasks:
-        file: tasks/linux-client/dnf-packages.yml
-      when: current_distribution == 'Fedora'
 
     - name: Deploy Flatpak packages
       include_tasks:

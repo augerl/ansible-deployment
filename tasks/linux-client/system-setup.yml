@@ -4,7 +4,7 @@
     current_distribution: "{{ ansible_facts.distribution }}"
 
 - name: Install some necassary system stuff on Arch
-  package:
+  pacman:
     name:
       - git
       - base-devel
@@ -18,26 +18,11 @@
     state: latest
   when: current_distribution == 'Arch'
 
-- name: Install some necassary system stuff on Fedora
-  dnf:
-    name:
-      - git
-      - cronie
-      - python3-psutil
-      - python3-pexpect
-      - python3-pip
-      - tlp
-      - tlp-rdw
-      - go
-    state: latest
-  when: current_distribution == 'Fedora'
-
 - name: start and enable cronie daemon
   service:
     name: cronie
     state: started
     enabled: true
-  when: current_distribution == 'Arch'
 
 - name: Check if Meslo font directory exists
   stat:
@@ -80,18 +65,6 @@
     key: "/system/locale/region"
     value: "'de_AT.UTF-8'"
   when: current_distribution == 'Arch'
-
-- name: set locales language on fedora
-  command: localectl set-locale LANG=en_US.UTF-8
-  when: current_distribution == 'Fedora'
-
-- name: set locales keymaps on fedora
-  command: localectl set-keymap at
-  when: current_distribution == 'Fedora'
-
-- name: set locales x11 layout on fedora
-  command: localectl set-x11-keymap at
-  when: current_distribution == 'Fedora'
 
 - name: Hide unused applications from Application Launcher
   blockinfile:
@@ -216,13 +189,12 @@
   stat:
     path: "/home/{{ current_user }}/projects/yay"
   register: yay_status
-  when: current_distribution == 'Arch'
 
 - name: clone yay repository
   git:
     repo: https://aur.archlinux.org/yay.git
     dest: /home/{{ current_user }}/projects/yay
-  when: (current_distribution == 'Arch') and (yay_status.stat.exists == false)
+  when: yay_status.stat.exists == false
 
 - name: make yay directory accessible
   file:
@@ -232,13 +204,12 @@
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
     mode: 0700
-  when: (current_distribution == 'Arch') and (yay_status.stat.exists == true)
+  when: yay_status.stat.exists == true
 
 - name: Check if yay is installed
   command: "which yay"
   register: yay_check
   ignore_errors: true
-  when: current_distribution == 'Arch'
 
 - name: install yay
   become: no

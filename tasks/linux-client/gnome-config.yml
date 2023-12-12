@@ -114,6 +114,6 @@
     name: sync-gnome-settings-and-extensions
     minute: "0"
     hour: "*/4"
-    job: "ansible-pull --url https://github.com/augerl/ansible-deployment.git arch-gnome-settings-playbook.yml"
+    job: "ansible-pull --url https://github.com/augerl/ansible-deployment.git gnome-settings-pb.yml"
 
 

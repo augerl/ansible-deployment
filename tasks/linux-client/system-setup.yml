@@ -188,6 +188,7 @@
 - name: remove default bookmarks
   lineinfile:
     path: /home/{{ current_user }}/.config/gtk-3.0/bookmarks
+    line: ""
     state: absent
 
 - name: Check if yay directory already exists

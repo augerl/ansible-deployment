@@ -80,7 +80,7 @@
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/icon-theme"
-    value: "'Colloid-Dark'"
+    value: "'Colloid-dark'"
 
 - name: set user theme
   become_user: "{{ current_user }}"
@@ -152,7 +152,7 @@
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll"
-    value: "true"
+    value: "false"
 
 - name: enable cursor acceleration (mouse)
   become_user: "{{ current_user }}"
@@ -208,6 +208,12 @@
 ### Blur My Shell ###
 #####################
 
+- name: hide top bar compatibility
+  become_user: "{{ current_user }}"
+  dconf:
+    key: "/org/gnome/shell/extensions/blur-my-shell/hidetopbar/compatibility"
+    value: "true"
+
 ################
 ### Espresso ###
 ################
@@ -219,6 +225,24 @@
 #############################
 ### Nautilus File Browser ###
 #############################
+
+- name: nautilus sort directories firs
+  become_user: "{{ current_user }}"
+  dconf:
+    key: "/org/gtk/gtk4/settings/file-chooser/sort-directories-first"
+    value: "true"
+
+- name: show delete permanently
+  become_user: "{{ current_user }}"
+  dconf:
+    key: "/org/gnome/nautilus/preferences/show-delete-permanently"
+    value: "true"
+
+- name: show delete permanently
+  become_user: "{{ current_user }}"
+  dconf:
+    key: "/org/gnome/nautilus/preferences/default-folder-viewer"
+    value: "'list-view'"
 
 ######################
 ### Gnome Terminal ###

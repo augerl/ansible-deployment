@@ -114,6 +114,8 @@
   register: whitesur_cursors_installed
 
 - name: clone cursor themes
+  become: no
+  become_user: "{{ current_user }}"
   git:
     repo: https://github.com/vinceliuice/WhiteSur-cursors.git
     dest: /home/{{ current_user }}/projects/gnome-theming/whitesur-cursors

@@ -105,7 +105,7 @@
 - name: install colloid icon them
   become: no
   become_user: "{{ current_user }}"
-  command: /home/{{ current_user }}/projects/gnome-theming/colloid-icon-theme/colloid-icon-theme/install.sh
+  command: /home/{{ current_user }}/projects/gnome-theming/colloid-icon-theme/install.sh
   when: not colloid_icons_installed.stat.exists
 
 - name: Check if the cursor directory exists

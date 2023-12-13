@@ -130,10 +130,15 @@
     chdir: "/home/{{ current_user }}/projects/gnome-theming/whitesur-cursors"
   when: not whitesur_cursors_installed.stat.exists
 
+- name: create personal directories
+  file:
+    path: /usr/share/backgrounds/pixel-wallpaper
+    state: directory
+
 - name: copy pixel wallpaper directory 
   copy:
     src: files/pixel-wallpaper/
-    dest: /usr/share/backgrounds/
+    dest: /usr/share/backgrounds/pixel-wallpaper
 
 - name: copy random background script
   copy:

@@ -146,7 +146,7 @@
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/peripherals/mouse/natural-scroll"
-    value: "true"
+    value: "false"
 
 - name: enable natural scrolling (touchpad)
   become_user: "{{ current_user }}"
@@ -180,13 +180,13 @@
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/Logo-menu/menu-button-terminal"
-    value: "alacritty"
+    value: "'alacritty'"
 
 - name: set menu system-monitor 
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/Logo-menu/menu-button-system-monitor"
-    value: "btop"
+    value: "'btop'"
 
 - name: show activities buttton 
   become_user: "{{ current_user }}"

@@ -132,8 +132,9 @@
 
 - name: copy pixel wallpaper directory 
   copy:
-    src: /files/pixel-wallpaper
-    dest: /usr/share/backgrounds/pixel-wallpaper
+    src: /files/pixel-wallpaper/
+    dest: /usr/share/backgrounds/
+    remote_source: yes
 
 - name: copy
   copy:

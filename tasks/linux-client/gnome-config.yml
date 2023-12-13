@@ -125,7 +125,9 @@
 - name: install white sur cursors
   become: no
   become_user: "{{ current_user }}"
-  command: /home/{{ current_user }}/projects/gnome-theming/whitesur-cursors/install.sh
+  shell: ./install.sh
+  args:
+    chdir: "/home/{{ current_user }}/projects/gnome-theming/whitesur-cursors"
   when: not whitesur_cursors_installed.stat.exists
 
 - name: Create cron job to sync gnome settings

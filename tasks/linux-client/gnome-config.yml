@@ -132,31 +132,18 @@
 
 - name: create personal directories
   file:
-    path: "/home/{{ current_user }}/pictures/pixel-wallpaper"
+    path: /usr/share/backgrounds/pixel-wallpaper
     state: directory
 
 - name: copy pixel wallpaper directory 
   copy:
     src: files/pixel-wallpaper/
-    dest: "/home/{{ current_user }}/pictures/pixel-wallpaper"
+    dest: /usr/share/backgrounds/pixel-wallpaper
 
-- name: copy random background script
+- name: copy gnome pref script to scripts directory
   copy:
-    src: files/scripts/gnome-random-background.sh
-    dest: /home/{{ current_user }}/scripts/gnome-random-background.sh
+    src: files/scripts/gnome-prefs.sh
+    dest: "/home/{{ current_user }}/scripts/gnome-prefs.sh"
+    mode: +x
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
-    mode: +x
-
-- name: Configure GNOME to run the script at every login
-  lineinfile:
-    path: /etc/xdg/autostart/change_wallpaper.desktop
-    line: "Exec=/home/{{ current_user }}/scripts/gnome-random-background.sh"
-    create: yes
-
-- name: Create cron job to sync gnome settings
-  cron:
-    name: sync-gnome-settings-and-extensions
-    job: "ansible-pull --url https://github.com/augerl/ansible-deployment.git gnome-settings-pb.yml >> /home/{{ current_user }}/projects/gnome-cron.log 2>&1"
-    special_time: reboot
-    user: "{{ current_user }}"

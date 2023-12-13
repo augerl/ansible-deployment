@@ -7,6 +7,10 @@
   set_fact:
     current_user: "{{ lookup('env', 'USER') }}"
 
+- name: print out username
+  debug:
+    msg: "{{ current_user }}"
+
 - name: Check if Inter font directory exists
   stat:
     path: "/usr/share/fonts/inter"

@@ -39,126 +39,154 @@
 #######################
 
 - name: disable weather service location
+  become: no
+  become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/calendar/weather-settings"
     value: false
 
 - name: show all input sources
+  become: no
+  become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/input-sources/show-all-sources"
     value:  true
 
 - name: Set Inter font as interface font
+  become: no
+  become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/font-name"
     value: "'Inter Light 11'"
 
 - name: Set Inter font as document font
+  become: no
+  become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/document-font-name"
     value: "'Inter Light 11'"
 
 - name: Set Inter font as titlebar font
+  become: no
+  become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/wm/preferences/titlebar-font"
     value: "'Inter Bold 11'"
 
 - name: Set Meslo as Terminal font
+  become: no
+  become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/monospace-font-name"
     value: "'MesloLGS Nerd Font 10'"
 
 - name: set color scheme
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/color-scheme"
     value: "'prefer-dark'"
 
 - name: set cursor theme
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/cursor-theme"
     value: "'WhiteSur-cursors'"
 
 - name: set icon theme
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/icon-theme"
     value: "'Colloid-dark'"
 
 - name: set user theme
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/user-theme/name"
     value: "'Colloid-Dark'"
 
 - name: set shell theme
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/gtk-theme"
     value: "'Colloid-Dark'"
 
 - name: button-layout
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/wm/preferences/button-layout"
     value: "':minimize,maximize,close'"
 
 - name: enable-hot-corners
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/enable-hot-corners"
     value: "false"
 
 - name: clock-show-weekday
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/clock-show-weekday"
     value: "true"
 
 - name: clock-show-seconds
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/clock-show-seconds"
     value: "true"
 
 - name: clock-show-weekdate
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/clock-show-weekdate"
     value: "true"
   
 - name: enable tap-to-click
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/peripherals/touchpad/tap-to-click"
     value: "true"
 
 - name: disable reboot/shutdown countdown
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/gnome-session/logout-prompt"
     value: "false"
 
 - name: show-battery-percentage
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/interface/show-battery-percentage"
     value: "true"
 
 - name: enable natural scrolling (mouse)
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/peripherals/mouse/natural-scroll"
     value: "false"
 
 - name: enable natural scrolling (touchpad)
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll"
     value: "false"
 
 - name: enable cursor acceleration (mouse)
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/desktop/peripherals/mouse/accel-profile"
@@ -169,36 +197,42 @@
 ##########################
 
 - name: set arch logo 
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/Logo-menu/menu-button-icon-image"
     value: "6"
 
 - name: set arch logo size
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/Logo-menu/menu-button-icon-size"
     value: "20"
 
 - name: set menu terminal 
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/Logo-menu/menu-button-terminal"
     value: "'alacritty'"
 
 - name: set menu system-monitor 
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/Logo-menu/menu-button-system-monitor"
     value: "'btop'"
 
 - name: show activities buttton 
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/Logo-menu/show-activities-button"
     value: "true"
 
 - name: hide icon shadow
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/Logo-menu/hide-icon-shadow"
@@ -209,30 +243,35 @@
 ###########################
 
 - name: move item first after selections
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/clipboard-indicator/move-item-first"
     value: "true"
 
 - name: set history size
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/clipboard-indicator/history-size"
     value: 100
 
 - name: set cache size
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/clipboard-indicator/cache-size"
     value: 50
 
 - name: set topbar characters
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/clipboard-indicator/topbar-preview-size"
     value: 15
   
 - name: toggle-menu
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/clipboard-indicator/toggle-menu"
@@ -243,6 +282,7 @@
 #####################
 
 - name: hide top bar compatibility
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/blur-my-shell/hidetopbar/compatibility"
@@ -253,12 +293,14 @@
 ########################
 
 - name: hide world clock
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/just-perfection/world-clock"
     value: "false"
 
 - name: hide weather
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/just-perfection/weather"
@@ -269,18 +311,21 @@
 #############################
 
 - name: nautilus sort directories firs
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gtk/gtk4/settings/file-chooser/sort-directories-first"
     value: "true"
 
 - name: show delete permanently
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/nautilus/preferences/show-delete-permanently"
     value: "true"
 
 - name: show delete permanently
+  become: no
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/nautilus/preferences/default-folder-viewer"

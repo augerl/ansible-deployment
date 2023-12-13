@@ -132,11 +132,10 @@
 
 - name: copy pixel wallpaper directory 
   copy:
-    src: /files/pixel-wallpaper/
+    src: files/pixel-wallpaper/
     dest: /usr/share/backgrounds/
-    remote_source: yes
 
-- name: copy
+- name: copy random background script
   copy:
     src: files/scripts/gnome-random-background.sh
     dest: /home/{{ current_user }}/scripts/gnome-random-background.sh

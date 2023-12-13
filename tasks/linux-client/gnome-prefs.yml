@@ -204,6 +204,36 @@
 ### Clipboard Indicator ###
 ###########################
 
+- name: move item first after selections
+  become_user: "{{ current_user }}"
+  dconf:
+    key: "/org/gnome/shell/extensions/clipboard-indicator/move-item-first"
+    value: "true"
+
+- name: set history size
+  become_user: "{{ current_user }}"
+  dconf:
+    key: "/org/gnome/shell/extensions/clipboard-indicator/history-size"
+    value: 100
+
+- name: set cache size
+  become_user: "{{ current_user }}"
+  dconf:
+    key: "/org/gnome/shell/extensions/clipboard-indicator/cache-size"
+    value: 50
+
+- name: set topbar characters
+  become_user: "{{ current_user }}"
+  dconf:
+    key: "/org/gnome/shell/extensions/clipboard-indicator/topbar-preview-size"
+    value: 15
+  
+- name: toggle-menu
+  become_user: "{{ current_user }}"
+  dconf:
+    key: "/org/gnome/shell/extensions/clipboard-indicator/toggle-menu"
+    value: "'<Alt_L>v'"
+
 #####################
 ### Blur My Shell ###
 #####################
@@ -214,13 +244,21 @@
     key: "/org/gnome/shell/extensions/blur-my-shell/hidetopbar/compatibility"
     value: "true"
 
-################
-### Espresso ###
-################
-
 ########################
 ### Just Perfection ####
 ########################
+
+- name: hide world clock
+  become_user: "{{ current_user }}"
+  dconf:
+    key: "/org/gnome/shell/extensions/just-perfection/world-clock"
+    value: "false"
+
+- name: hide weather
+  become_user: "{{ current_user }}"
+  dconf:
+    key: "/org/gnome/shell/extensions/just-perfection/weather"
+    value: "false"
 
 #############################
 ### Nautilus File Browser ###
@@ -243,7 +281,3 @@
   dconf:
     key: "/org/gnome/nautilus/preferences/default-folder-viewer"
     value: "'list-view'"
-
-######################
-### Gnome Terminal ###
-######################

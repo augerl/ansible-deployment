@@ -130,6 +130,25 @@
     chdir: "/home/{{ current_user }}/projects/gnome-theming/whitesur-cursors"
   when: not whitesur_cursors_installed.stat.exists
 
+- name: copy pixel wallpaper directory 
+  copy:
+    src: /files/pixel-wallpaper
+    dest: /usr/share/backgrounds/pixel-wallpaper
+
+- name: copy
+  copy:
+    src: files/scripts/gnome-random-background.sh
+    dest: /home/{{ current_user }}/scripts/gnome-random-background.sh
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: +x
+
+- name: Configure GNOME to run the script at every login
+  lineinfile:
+    path: /etc/xdg/autostart/change_wallpaper.desktop
+    line: "Exec=/home/{{ current_user }}/scripts/gnome-random-background.sh"
+    create: yes
+
 - name: Create cron job to sync gnome settings
   cron:
     name: sync-gnome-settings-and-extensions

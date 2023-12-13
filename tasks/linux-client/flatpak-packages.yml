@@ -10,7 +10,7 @@
 #    state: present
 #    name:
 #      # Media
-#      - com.discordapp.Discord    # Team messaging and voice
+#      - org.ferdium.Ferdium       # multi Messaging
 #      - com.spotify.Client        # Music streaming
 #      - com.gitlab.newsflash      # RSS reader
 #      - org.gnome.Cheese          # Webcam client

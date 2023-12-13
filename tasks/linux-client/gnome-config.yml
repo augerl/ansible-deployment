@@ -19,6 +19,8 @@
   file:
     dest: /home/{{ current_user }}/projects/install-gnome-extensions/install-gnome-extensions.sh
     mode: +x
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
 
 - name: copy gnome-extensions file to project directory
   copy:
@@ -76,19 +78,19 @@
   become_user: "{{ current_user }}"
   git:
     repo: https://github.com/vinceliuice/Colloid-gtk-theme.git
-    dest: "/home/{{ current_user }}/projects/gnome-themes/colloid-gtk-theme"
+    dest: "/home/{{ current_user }}/projects/gnome-theming/colloid-gtk-theme"
     force: yes
   when: not colloid_installed.stat.exists
 
 - name: install colloid gtk theme
   become: no
   become_user: "{{ current_user }}"
-  command: "/home/{{ current_user }}/projects/gnome-themes/colloid-gtk-theme/install.sh --color dark --libadwaita --tweaks rimless"
+  command: "/home/{{ current_user }}/projects/gnome-theming/colloid-gtk-theme/install.sh --color dark --libadwaita --tweaks rimless"
   when: not colloid_installed.stat.exists
 
 - name: Check if the icon directory exists
   stat:
-    path: /home/{{ current_user }}/.local/share/icons/colloid-icon-theme
+    path: /home/{{ current_user }}/projects/gnome-theming/colloid-icon-theme
   register: colloid_icons_installed
 
 - name: clone colloid icon theme
@@ -96,19 +98,19 @@
   become_user: "{{ current_user }}"
   git:
     repo: https://github.com/vinceliuice/Colloid-icon-theme.git
-    dest: /home/{{ current_user }}/.local/share/icons/colloid-icon-theme
+    dest: /home/{{ current_user }}/projects/gnome-theming/colloid-icon-theme
     force: yes
   when: not colloid_icons_installed.stat.exists
 
 - name: install colloid icon them
   become: no
   become_user: "{{ current_user }}"
-  command: /home/{{ current_user }}/.local/share/icons/colloid-icon-theme/install.sh
+  command: /home/{{ current_user }}/projects/gnome-theming/colloid-icon-theme/colloid-icon-theme/install.sh
   when: not colloid_icons_installed.stat.exists
 
 - name: Check if the cursor directory exists
   stat:
-    path: /home/{{ current_user }}/.local/share/icons/whiteSur-cursors
+    path: /home/{{ current_user }}/projects/gnome-theming/whiteSur-cursors
   register: whitesur_cursors_installed
 
 - name: clone cursor themes
@@ -116,14 +118,14 @@
   become_user: "{{ current_user }}"
   git:
     repo: https://github.com/vinceliuice/WhiteSur-cursors.git
-    dest: /home/{{ current_user }}/.local/share/icons/whitesur-cursors
+    dest: /home/{{ current_user }}/projects/gnome-theming/whitesur-cursors
     force: yes
   when: not whitesur_cursors_installed.stat.exists
 
 - name: install white sur cursors
   become: no
   become_user: "{{ current_user }}"
-  command: /home/{{ current_user }}/.local/share/icons/whitesur-cursors/install.sh
+  command: /home/{{ current_user }}/projects/gnome-theming/whitesur-cursors/install.sh
   when: not whitesur_cursors_installed.stat.exists
 
 - name: Create cron job to sync gnome settings

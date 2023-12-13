@@ -17,6 +17,19 @@
     path: "/usr/share/fonts/Meslo"
   register: meslo_font_status
 
+- name: enable gnome extensions
+  become: no
+  become_user: "{{ current_user }}"
+  shell: "gnome-extensions enable {{ item }}"
+  with_items:
+    - "logomenu@aryan_k"
+    - "user-theme@gnome-shell-extensions.gcampax.github.com"
+    - "espresso@coadmunkee.github.com"
+    - "gsconnect@andyholmes.github.io"
+    - "blur-my-shell@aunetx"
+    - "clipboard-indicator@tudmotu.com"
+    - "just-perfection-desktop@just-perfection"
+
 #######################
 ### dconf setttings ###
 #######################

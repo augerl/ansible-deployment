@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the path to the directory containing wallpapers
-wallpaper_dir="/usr/share/backgrounds/pixel-wallpaper"
+wallpaper_dir="~/pictures/pixel-wallpaper"
 
 # Get a list of all files in the wallpaper directory
 wallpapers=("$wallpaper_dir"/*)

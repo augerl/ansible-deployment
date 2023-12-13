@@ -132,13 +132,13 @@
 
 - name: create personal directories
   file:
-    path: /usr/share/backgrounds/pixel-wallpaper
+    path: "/home/{{ current_user }}/pictures/pixel-wallpaper"
     state: directory
 
 - name: copy pixel wallpaper directory 
   copy:
     src: files/pixel-wallpaper/
-    dest: /usr/share/backgrounds/pixel-wallpaper
+    dest: "/home/{{ current_user }}/pictures/pixel-wallpaper"
 
 - name: copy random background script
   copy:
@@ -157,6 +157,6 @@
 - name: Create cron job to sync gnome settings
   cron:
     name: sync-gnome-settings-and-extensions
-    job: "ansible-pull --url https://github.com/augerl/ansible-deployment.git gnome-settings-pb.yml"
+    job: "ansible-pull --url https://github.com/augerl/ansible-deployment.git gnome-settings-pb.yml >> /home/{{ current_user }}/projects/gnome-cron.log 2>&1"
     special_time: reboot
     user: "{{ current_user }}"

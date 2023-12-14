@@ -154,6 +154,6 @@
     dest: "/etc/xdg/autostart/gnome.customizing.desktop"
 
 - name: copy gnome wallpaper randomizer to it's location
-  copy:
+  template:
     src: files/gnome-extensions/gnome.rdm.background.j2
     dest: "/etc/xdg/autostart/gnome.rdm.background.desktop"

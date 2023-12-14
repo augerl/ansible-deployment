@@ -143,7 +143,7 @@
 - name: copy random_wallpaper script to scripts dir
   copy:
     src: files/scripts/random_wallpaper.sh
-    dst: "/home/{{ current_user }}/scripts/random_wallpaper.sh"
+    dest: "/home/{{ current_user }}/scripts/random_wallpaper.sh"
     mode: +x
     owner: "{{ current_user }}"
     group: "{{ current_user }}"
@@ -156,4 +156,4 @@
 - name: copy gnome wallpaper randomizer to it's location
   copy:
     src: files/gnome.rdm.background.j2
-    dst: "/etc/xdg/autostart/gnome.rdm.background.desktop"
+    dest: "/etc/xdg/autostart/gnome.rdm.background.desktop"

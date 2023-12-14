@@ -140,7 +140,20 @@
     src: files/pixel-wallpaper/
     dest: /usr/share/backgrounds/pixel-wallpaper
 
-- name: copy gnome autostart file to it's location
+- name: copy random_wallpaper script to scripts dir
+  copy:
+    src: files/scripts/random_wallpaper.sh
+    dst: "/home/{{ current_user }}/scripts/random_wallpaper.sh"
+    mode: +x
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+
+- name: copy gnome customize autostart file to it's location
   copy:
     src: files/gnome-extensions/gnome.customizing.desktop
     dest: "/etc/xdg/autostart/gnome.customizing.desktop"
+
+- name: copy gnome wallpaper randomizer to it's location
+  copy:
+    src: files/gnome.rdm.background.j2
+    dst: "/etc/xdg/autostart/gnome.rdm.background.desktop"

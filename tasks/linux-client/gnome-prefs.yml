@@ -222,7 +222,7 @@
   become_user: "{{ current_user }}"
   dconf:
     key: "/org/gnome/shell/extensions/Logo-menu/menu-button-system-monitor"
-    value: "'btop'"
+    value: "'kgx -e btop'"
 
 - name: show activities buttton 
   become: no

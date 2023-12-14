@@ -330,3 +330,10 @@
   dconf:
     key: "/org/gnome/nautilus/preferences/default-folder-viewer"
     value: "'list-view'"
+
+- name: create gnome-customizing-done
+  copy:
+    content: ""
+    dest: "/home/{{ current_user }}/.config/gnome-customizing-done"
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"

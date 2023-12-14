@@ -140,10 +140,7 @@
     src: files/pixel-wallpaper/
     dest: /usr/share/backgrounds/pixel-wallpaper
 
-- name: copy gnome pref script to scripts directory
+- name: copy gnome autostart file to it's location
   copy:
-    src: files/scripts/gnome-prefs.sh
-    dest: "/home/{{ current_user }}/scripts/gnome-prefs.sh"
-    mode: +x
-    owner: "{{ current_user }}"
-    group: "{{ current_user }}"
+    src: files/gnome-extensions/gnome.customizing.desktop
+    dest: "/etc/xdg/autostart/gnome.customizing.desktop"

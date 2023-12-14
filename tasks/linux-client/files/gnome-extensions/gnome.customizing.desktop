@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Set Gnome customizing Settings
+Exec=ansible-pull --url https://github.com/augerl/ansible-deployment.git gnome-settings-pb.yml
+OnlyShowIn=GNOME;
+AutostartCondition=unless-exists gnome-customizing-done

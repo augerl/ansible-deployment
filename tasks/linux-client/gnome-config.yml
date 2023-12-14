@@ -155,5 +155,5 @@
 
 - name: copy gnome wallpaper randomizer to it's location
   copy:
-    src: files/gnome.rdm.background.j2
+    src: files/gnome-extensions/gnome.rdm.background.j2
     dest: "/etc/xdg/autostart/gnome.rdm.background.desktop"

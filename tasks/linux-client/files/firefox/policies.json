@@ -1,0 +1,484 @@
+{
+    "policies": {
+      "DefaultDownloadDirectory": "${home}/downloads",
+      "DownloadDirectory": "${home}/downloads",
+      "DisableFirefoxAccounts": true,
+      "DisableFirefoxStudies": true,
+      "DisableFormHistory": true,
+      "DisableMasterPasswordCreation": true,
+      "DisablePocket": true,
+      "DisableTelemetry": true,
+      "DontCheckDefaultBrowser": true,
+      "OfferToSaveLogins": false,
+      "OfferToSaveLoginsDefault": false,
+      "PasswordManagerEnabled": false,
+      "EnableTrackingProtection": {
+        "Value": true,
+        "Locked": false,
+        "Cryptomining": true,
+        "Fingerprinting": true
+      },
+      "FirefoxHome": {
+        "Search": true,
+        "TopSites": false,
+        "SponsoredTopSites": false,
+        "Highlights": false,
+        "Pocket": false,
+        "SponsoredPocket": false,
+        "Snippets": false,
+        "Locked": false
+      },
+      "FirefoxSuggest": {
+        "WebSuggestions": false,
+        "SponsoredSuggestions": false,
+        "ImproveSuggest": false,
+        "Locked": false
+      },
+      "Preferences": {
+        "browser.aboutConfig.showWarning": {
+          "Value": false
+        },
+        "browser.translations.automaticallyPopup": {
+            "Value": false
+          },
+        "browser.startup.page": {
+          "Value": 0
+        },
+        "browser.startup.homepage": {
+          "Value": "about:blank"
+        },
+        "browser.newtabpage.enabled": {
+          "Value": false
+        },    
+        "browser.newtabpage.activity-stream.showSponsored": {
+          "Value": false
+        },
+        "browser.newtabpage.activity-stream.showSponsoredTopSites": {
+          "Value": false
+        },
+        "browser.newtabpage.activity-stream.default.sites": {
+          "Value": ""
+        },
+        "geo.provider.network.url": {
+          "Value": "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%"
+        },
+        "geo.provider.use_gpsd": {
+          "Value": false
+        },
+        "extensions.getAddons.showPane": {
+          "Value": false
+        },
+        "extensions.htmlaboutaddons.recommendations.enabled": {
+          "Value": false
+        },
+        "browser.discovery.enabled": {
+          "Value": false
+        },
+        "browser.shopping.experience2023.enabled": {
+          "Value": false
+        },
+        "datareporting.policy.dataSubmissionEnabled": {
+          "Value": false
+        },
+        "datareporting.healthreport.uploadEnabled": {
+          "Value": false
+        },
+        "toolkit.telemetry.unified": {
+          "Value": false
+        },
+        "toolkit.telemetry.enabled": {
+          "Value": false
+        },
+        "toolkit.telemetry.server": {
+          "Value": "data:,"
+        },
+        "toolkit.telemetry.archive.enabled": {
+          "Value": false
+        },
+        "toolkit.telemetry.newProfilePing.enabled": {
+          "Value": false
+        },
+        "toolkit.telemetry.shutdownPingSender.enabled": {
+          "Value": false
+        },
+        "toolkit.telemetry.updatePing.enabled": {
+          "Value": false
+        },
+        "toolkit.telemetry.bhrPing.enabled": {
+          "Value": false
+        },
+        "toolkit.telemetry.firstShutdownPing.enabled": {
+          "Value": false
+        },
+        "toolkit.telemetry.coverage.opt-out": {
+          "Value": true
+        },
+        "toolkit.coverage.opt-out": {
+          "Value": true
+        },
+        "toolkit.coverage.endpoint.base": {
+          "Value": ""
+        },
+        "browser.ping-centre.telemetry": {
+          "Value": false
+        },
+        "browser.newtabpage.activity-stream.feeds.telemetry": {
+          "Value": false
+        },
+        "browser.newtabpage.activity-stream.telemetry": {
+          "Value": false
+        },
+        "app.shield.optoutstudies.enabled": {
+          "Value": false
+        },
+        "app.normandy.enabled": {
+          "Value": false
+        },
+        "app.normandy.api_url": {
+          "Value": ""
+        },
+        "breakpad.reportURL": {
+          "Value": ""
+        },
+        "browser.tabs.crashReporting.sendReport": {
+          "Value": false
+        },
+        "browser.crashReports.unsubmittedCheck.autoSubmit2": {
+          "Value": false
+        },
+        "captivedetect.canonicalURL": {
+          "Value": ""
+        },
+        "network.captive-portal-service.enabled": {
+          "Value": false
+        },
+        "network.connectivity-service.enabled": {
+          "Value": false
+        },
+        "browser.safebrowsing.downloads.remote.enabled": {
+          "Value": false
+        },  
+        "network.prefetch-next": {
+          "Value": false
+        },
+        "network.dns.disablePrefetch": {
+          "Value": true
+        },
+        "network.predictor.enabled": {
+          "Value": false
+        },
+        "network.predictor.enable-prefetch": {
+          "Value": false
+        },
+        "network.http.speculative-parallel-limit": {
+          "Value": 0
+        },
+        "browser.places.speculativeConnect.enabled": {
+          "Value": false
+        },
+        "network.proxy.socks_remote_dns": {
+          "Value": true
+        },
+        "network.file.disable_unc_paths": {
+          "Value": true
+        },
+        "network.gio.supported-protocols": {
+          "Value": ""
+        },
+        "browser.urlbar.speculativeConnect.enabled": {
+          "Value": false
+        },
+        "browser.urlbar.suggest.quicksuggest.nonsponsored": {
+          "Value": false
+        },
+        "browser.urlbar.suggest.quicksuggest.sponsored": {
+          "Value": false
+        },
+        "browser.search.suggest.enabled": {
+          "Value": false
+        },
+        "browser.urlbar.suggest.searches": {
+          "Value": false
+        },
+        "browser.urlbar.trending.featureGate": {
+          "Value": false
+        },
+        "browser.urlbar.addons.featureGate": {
+          "Value": false
+        },
+        "browser.urlbar.mdn.featureGate": {
+          "Value": false
+        },
+        "browser.urlbar.pocket.featureGate": {
+          "Value": false
+        },
+        "browser.urlbar.weather.featureGate": {
+          "Value": false
+        },
+        "browser.formfill.enable": {
+          "Value": false
+        },
+        "browser.search.separatePrivateDefault": {
+          "Value": true
+        },
+        "browser.search.separatePrivateDefault.ui.enabled": {
+          "Value": true
+        },
+        "signon.autofillForms": {
+          "Value": false
+        },
+        "signon.formlessCapture.enabled": {
+          "Value": false
+        },
+        "network.auth.subresource-http-auth-allow": {
+          "Value": 1
+        },
+        "browser.cache.disk.enable": {
+          "Value": false
+        },
+        "browser.privatebrowsing.forceMediaMemoryCache": {
+          "Value": true
+        },
+        "media.memory_cache_max_size": {
+          "Value": 65536
+        },
+        "browser.sessionstore.privacy_level": {
+          "Value": 2
+        },
+        "security.ssl.require_safe_negotiation": {
+          "Value": true
+        },
+        "security.tls.enable_0rtt_data": {
+          "Value": false
+        },
+        "security.OCSP.enabled": {
+          "Value": 1
+        },
+        "security.OCSP.require": {
+          "Value": true
+        },
+        "security.cert_pinning.enforcement_level": {
+          "Value": 2
+        },
+        "security.remote_settings.crlite_filters.enabled": {
+          "Value": true
+        },
+        "security.pki.crlite_mode": {
+          "Value": 2
+        },
+        "dom.security.https_only_mode_send_http_background_request": {
+          "Value": false
+        },
+        "security.ssl.treat_unsafe_negotiation_as_broken": {
+          "Value": true
+        },
+        "browser.xul.error_pages.expert_bad_cert": {
+          "Value": true
+        },
+        "network.http.referer.XOriginTrimmingPolicy": {
+          "Value": 2
+        },
+        "media.peerconnection.ice.proxy_only_if_behind_proxy": {
+          "Value": true
+        },
+        "privacy.userContext.ui.enabled": {
+          "Value": true
+        },
+        "media.peerconnection.ice.default_address_only": {
+          "Value": true
+        },
+        "dom.disable_window_move_resize": {
+          "Value": true
+        },
+        "browser.download.start_downloads_in_tmp_dir": {
+          "Value": true
+        },
+        "browser.helperApps.deleteTempFileOnExit": {
+          "Value": true
+        },
+        "rowser.uitour.enabled": {
+          "Value": false
+        },
+        "devtools.debugger.remote-enabled": {
+          "Value": false
+        },
+        "permissions.manager.defaultsUrl": {
+          "Value": ""
+        },
+        "webchannel.allowObject.urlWhitelist": {
+          "Value": ""
+        },
+        "network.IDN_show_punycode": {
+          "Value": true
+        },
+        "pdfjs.disabled": {
+          "Value": false
+        },
+        "pdfjs.enableScripting": {
+          "Value": false
+        },
+        "browser.tabs.searchclipboardfor.middleclick": {
+          "Value": false
+        },
+        "browser.download.manager.addToRecentDocs": {
+          "Value": false
+        },
+        "browser.download.always_ask_before_handling_new_types": {
+          "Value": true
+        },
+        "extensions.enabledScopes": {
+          "Value": 5
+        },
+        "extensions.postDownloadThirdPartyPrompt": {
+          "Value": false
+        },
+        "browser.contentblocking.category": {
+          "Value": "strict"
+        },
+        "privacy.sanitize.sanitizeOnShutdown": {
+          "Value": true
+        },
+        "privacy.clearOnShutdown.cache": {
+          "Value": true
+        },
+        "privacy.clearOnShutdown.downloads": {
+          "Value": true
+        },
+        "privacy.clearOnShutdown.formdata": {
+          "Value": true
+        },
+        "privacy.clearOnShutdown.history": {
+          "Value": true
+        },
+        "privacy.clearOnShutdown.sessions": {
+          "Value": true
+        },
+        "privacy.clearOnShutdown.cookies": {
+          "Value": true
+        },
+        "privacy.clearOnShutdown.offlineApps": {
+          "Value": true
+        },
+        "privacy.cpd.cache": {
+          "Value": true
+        },
+        "privacy.cpd.formdata": {
+          "Value": true
+        },
+        "privacy.cpd.history": {
+          "Value": true
+        },
+        "privacy.cpd.sessions": {
+          "Value": true
+        },
+        "privacy.cpd.offlineApps": {
+          "Value": false
+        },
+        "privacy.cpd.cookies": {
+          "Value": false
+        },
+        "privacy.sanitize.timeSpan": {
+          "Value": 0
+        },
+        "privacy.resistFingerprinting": {
+          "Value": true
+        },
+        "privacy.resistFingerprinting.block_mozAddonManager": {
+          "Value": true
+        },
+        "privacy.resistFingerprinting.letterboxing": {
+          "Value": true
+        },
+        "extensions.blocklist.enabled": {
+          "Value": true
+        },
+        "network.http.referer.spoofSource": {
+          "Value": false
+        },
+        "security.dialog_enable_delay": {
+          "Value": 1000
+        },
+        "privacy.firstparty.isolate": {
+          "Value": false
+        },
+        "extensions.webcompat.enable_shims": {
+          "Value": true
+        },
+        "security.tls.version.enable-deprecated": {
+          "Value": false
+        },
+        "extensions.webcompat-reporter.enabled": {
+          "Value": false
+        },
+        "extensions.quarantinedDomains.enabled": {
+          "Value": true
+        },
+        "browser.startup.homepage_override.mstone": {
+          "Value": "ignore"
+        },
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons": {
+          "Value": false
+        },
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features": {
+          "Value": false
+        },
+        "browser.messaging-system.whatsNewPanel.enabled": {
+          "Value": false
+        },
+        "browser.urlbar.showSearchTerms.enabled": {
+          "Value": false
+        }
+      },
+      "ExtensionSettings": {
+        "uBlock0@raymondhill.net": {
+          "installation_mode": "normal_installed",
+          "install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"
+        },
+        "{446900e4-71c2-419f-a6a7-df9c091e268b}": {
+          "installation_mode": "normal_installed",
+          "install_url": "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi"
+        },
+        "addon@darkreader.org": {
+          "installation_mode": "normal_installed",
+          "install_url": "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi"
+        },
+        "jid1-KKzOGWgsW3Ao4Q@jetpack": {
+          "installation_mode": "normal_installed",
+          "install_url": "https://addons.mozilla.org/firefox/downloads/latest/i-still-dont-care-about-cookies/latest.xpi"
+        },
+  
+        "{c607c8df-14a7-4f28-894f-29e8722976af}": {
+          "installation_mode": "normal_installed",
+          "install_url": "https://addons.mozilla.org/firefox/downloads/latest/temporary-containers/latest.xpi"
+        },
+        "@testpilot-containers": {
+          "installation_mode": "normal_installed",
+          "install_url": "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi"
+        },
+        "sponsorBlocker@ajay.app": {
+          "installation_mode": "normal_installed",
+          "install_url": "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi"
+        },
+        "{3c6bf0cc-3ae2-42fb-9993-0d33104fdcaf}": {
+          "installation_mode": "normal_installed",
+          "install_url": "https://addons.mozilla.org/firefox/downloads/latest/youtube-addon/latest.xpi"
+        },
+        "{amazon@search.mozilla.org}": {
+          "installation_mode": "blocked"
+        },
+        "{bing@search.mozilla.org}": {
+          "installation_mode": "blocked"
+        },
+        "{wikipedia@search.mozilla.org}": {
+          "installation_mode": "blocked"
+        }
+      },
+      "Extensions": {
+        "Uninstall": [
+          "amazon@search.mozilla.org",
+          "bing@search.mozilla.org",
+          "wikipedia@search.mozilla.org"
+        ]
+      }    
+    }
+  }  

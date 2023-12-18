@@ -444,7 +444,7 @@
         },
         "jid1-KKzOGWgsW3Ao4Q@jetpack": {
           "installation_mode": "normal_installed",
-          "install_url": "https://addons.mozilla.org/firefox/downloads/latest/i-still-dont-care-about-cookies/latest.xpi"
+          "install_url": "https://addons.mozilla.org/firefox/downloads/latest/istilldontcareaboutcookies/latest.xpi"
         },
   
         "{c607c8df-14a7-4f28-894f-29e8722976af}": {
@@ -463,6 +463,10 @@
           "installation_mode": "normal_installed",
           "install_url": "https://addons.mozilla.org/firefox/downloads/latest/youtube-addon/latest.xpi"
         },
+        "skipredirect@sblask": {
+            "installation_mode": "normal_installed",
+            "install_url": "https://addons.mozilla.org/firefox/downloads/latest/skip-redirect/latest.xpi"
+          },
         "{amazon@search.mozilla.org}": {
           "installation_mode": "blocked"
         },
